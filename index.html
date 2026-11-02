@@ -781,6 +781,22 @@ button{font:inherit;cursor:pointer}
   font-size: 10px;
   line-height: 1.45;
 }
+
+/* Separate course pricing card border */
+.pricing-card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.pricing-details-card {
+  background: #fff;
+  border: 1.5px solid #ffb4c7;
+  border-radius: 15px;
+  padding: 17px 15px 14px;
+  box-shadow: 0 0 0 2px rgba(255,180,199,.12);
+}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -797,6 +813,7 @@ button{font:inherit;cursor:pointer}
   </div>
 
   <div class="pricing-card">
+    <section class="pricing-details-card">
     <div class="pricing-top">
       <span class="admission-status">
         <span class="status-dot"></span>
@@ -830,7 +847,8 @@ button{font:inherit;cursor:pointer}
 
     <button class="pricing-enroll"
       onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
-      Explore Course <span>→</span>
+      
+    </section>Explore Course <span>→</span>
     </button>
 
     <section class="demo-registration" aria-labelledby="demo-registration-title">
