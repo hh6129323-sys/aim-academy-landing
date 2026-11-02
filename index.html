@@ -797,6 +797,30 @@ button{font:inherit;cursor:pointer}
   padding: 17px 15px 14px;
   box-shadow: 0 0 0 2px rgba(255,180,199,.12);
 }
+
+/* FINAL PRICING CARD LAYOUT FIX */
+.pricing-card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.pricing-details-card {
+  display: block;
+  width: 100%;
+  background: #fff;
+  color: #172033;
+  border: 1.5px solid #ffb4c7;
+  border-radius: 15px;
+  padding: 17px 15px 14px;
+  box-shadow: 0 0 0 2px rgba(255,180,199,.12);
+}
+.pricing-details-card .pricing-enroll {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -814,43 +838,41 @@ button{font:inherit;cursor:pointer}
 
   <div class="pricing-card">
     <section class="pricing-details-card">
-    <div class="pricing-top">
-      <span class="admission-status">
-        <span class="status-dot"></span>
-        ADMISSION OPEN
-      </span>
-      <span class="online-label">ONLINE</span>
-    </div>
+      <div class="pricing-top">
+        <span class="admission-status">
+          <span class="status-dot"></span>
+          ADMISSION OPEN
+        </span>
+        <span class="online-label">ONLINE</span>
+      </div>
 
-    <p class="pricing-eyebrow">PROFESSIONAL TRAINING PROGRAM</p>
-    <h3>AI Automation Mastery</h3>
-    <p class="pricing-subtitle">শিখুন, তৈরি করুন এবং বাস্তব কাজে প্রয়োগ করুন</p>
+      <p class="pricing-eyebrow">PROFESSIONAL TRAINING PROGRAM</p>
+      <h3>AI Automation Mastery</h3>
+      <p class="pricing-subtitle">শিখুন, তৈরি করুন এবং বাস্তব কাজে প্রয়োগ করুন</p>
 
-    <div class="price-area">
-      <span class="price-currency">৳</span>
-      <span class="price-number">7,000</span>
-    </div>
-    <p class="price-caption">One-time Course Fee</p>
+      <div class="price-area">
+        <span class="price-currency">৳</span>
+        <span class="price-number">7,000</span>
+      </div>
+      <p class="price-caption">One-time Course Fee</p>
 
-    <div class="pricing-divider"></div>
+      <div class="pricing-divider"></div>
+      <p class="included-title">YOUR COURSE INCLUDES</p>
 
-    <p class="included-title">YOUR COURSE INCLUDES</p>
+      <ul class="pricing-features">
+        <li><span>✓</span> ৮ সপ্তাহের Structured Training</li>
+        <li><span>✓</span> ২৪টি Live Classes</li>
+        <li><span>✓</span> ৮টি Practical Projects</li>
+        <li><span>✓</span> ৮০টি Learning Resources</li>
+        <li><span>✓</span> ৬০ দিনের Student Support</li>
+        <li><span>✓</span> Freelancing & Client Skills</li>
+      </ul>
 
-    <ul class="pricing-features">
-      <li><span>✓</span> ৮ সপ্তাহের Structured Training</li>
-      <li><span>✓</span> ২৪টি Live Classes</li>
-      <li><span>✓</span> ৮টি Practical Projects</li>
-      <li><span>✓</span> ৮০টি Learning Resources</li>
-      <li><span>✓</span> ৬০ দিনের Student Support</li>
-      <li><span>✓</span> Freelancing & Client Skills</li>
-    </ul>
-
-    <button class="pricing-enroll"
-      onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
-      
-    </section>Explore Course <span>→</span>
-    </button>
-
+      <button class="pricing-enroll"
+        onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
+        Explore Course <span>→</span>
+      </button>
+    </section>
     <section class="demo-registration" aria-labelledby="demo-registration-title">
       <div class="demo-form-heading">
         <span class="demo-form-icon">▶</span>
