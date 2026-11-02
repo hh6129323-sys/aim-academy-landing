@@ -1956,44 +1956,6 @@ const modules = [
   ["Class 24","Final Capstone & Presentation",["Complete System Architecture","Multi-API ও AI Agent Integration","Database ও Error Handling","Deployment ও Security Testing","Final Demo & Client Presentation"]]
  ],project:"Project 08 – Complete AI Business Automation System"
 }
-
-{
- title:"Google Cloud & Workspace API Integration",icon:"☁",short:"Google Cloud, OAuth, Gmail API, Google Sheets API",
- desc:"Google Cloud Console ও Google Workspace API ব্যবহার করে n8n-এর সঙ্গে Gmail এবং Google Sheets যুক্ত করবেন।",
- classes:[
-  ["Class 25","Google Cloud Console & API Setup",["Google Cloud Project তৈরি","Gmail API ও Google Sheets API Enable","OAuth Consent Screen Configure","Client ID ও Client Secret Generate"]],
-  ["Class 26","OAuth Credentials & n8n Integration",["n8n-এ Google Credentials Connect","OAuth Authentication Flow","Trigger ও Action Configure","JSON Data-এর Basic ধারণা"]],
-  ["Class 27","Gmail & Google Sheets Live Workflow",["Gmail Trigger থেকে Email Data নেওয়া","Email Data Google Sheets-এ Save","Google Sheets থেকে Data Read ও Update","Live Workflow Testing ও Error Fixing"]]
- ],project:"Project 09 – Gmail to Google Sheets Automation"
-},
-{
- title:"AI Voice & Chat Agent Development",icon:"🎙",short:"Vapi, Retell AI, Voice Agent, Conversation Logic",
- desc:"AI Voice ও Chat Agent তৈরি করে বাস্তব Business Communication Automation করবেন।",
- classes:[
-  ["Class 28","AI Voice Agent Fundamentals",["AI Agent ও Voice Agent কী","Voice Agent কীভাবে কাজ করে","Vapi ও Retell AI পরিচিতি","Real Business Use Cases"]],
-  ["Class 29","Voice Agent Setup & Conversation Design",["Live Voice Agent Demo","Agent Flow ও Conversation Logic","Prompt Design ও Instructions","Customer Question ও Response Handling"]],
-  ["Class 30","Business Voice & Chat Automation",["Appointment ও Customer Support Use Case","Agent-এর সঙ্গে Workflow Integration","Human Handover ও Testing","Business Scenario অনুযায়ী Agent Optimize"]]
- ],project:"Project 10 – AI Business Voice & Chat Agent"
-},
-{
- title:"Advanced RAG & Knowledge Base Automation",icon:"⌕",short:"Document Processing, Embeddings, Vector Store, RAG Agent",
- desc:"নিজস্ব Business Knowledge Base থেকে প্রাসঙ্গিক তথ্য খুঁজে উত্তর দিতে পারে এমন RAG Agent তৈরি করবেন।",
- classes:[
-  ["Class 31","RAG & Knowledge Base Architecture",["RAG কী ও কেন প্রয়োজন","Knowledge Base ও Document Processing","Text Chunking ও Embeddings","Vector Database ও Semantic Search"]],
-  ["Class 32","Supabase Vector & Knowledge Retrieval",["Supabase Vector Store Setup","Embedding তৈরি ও Store করা","Relevant Information Search","Retrieved Context দিয়ে উত্তর তৈরি"]],
-  ["Class 33","AI Email RAG Agent",["Gmail থেকে Email Data নেওয়া","Email Data Processing ও Embedding","Vector Store-এ Knowledge Save","Context-based AI Response তৈরি"]]
- ],project:"Project 11 – AI Email RAG Knowledge Assistant"
-},
-{
- title:"Real Client Automation & Final Deployment",icon:"🚀",short:"Client Requirements, Workflow Mapping, Testing, Deployment",
- desc:"Client-এর প্রয়োজন বুঝে Business Automation Solution তৈরি, পরীক্ষা ও Deploy করবেন।",
- classes:[
-  ["Class 34","Client Requirement & Workflow Planning",["Client Requirement বোঝা","Automation Opportunity শনাক্ত করা","Workflow Mapping ও Solution Planning","Business Use Case নির্বাচন"]],
-  ["Class 35","Real Business Automation Project",["Lead Generation ও Customer Support Workflow","Appointment Booking ও CRM Automation","AI Chatbot, Voice Agent ও RAG Integration","End-to-End Workflow Build"]],
-  ["Class 36","Testing, Deployment & Project Presentation",["Workflow Testing ও Error Handling","Optimization ও Security Basics","Deployment ও Documentation","Problem, Solution ও Business Impact Presentation"]]
- ],project:"Project 12 – Complete Real Business Automation Solution"
-}
-
 ];
 
 const grid=document.getElementById("moduleGrid");
@@ -2047,32 +2009,6 @@ const moduleTools = [
   {name:"GoHighLevel",mark:"GHL",style:"ghl"},
   {name:"Supabase",mark:"ϟ",style:"supabase"}
  ]
-
- [
-  {name:"Google Cloud",mark:"G",style:"maps"},
-  {name:"Gmail API",mark:"M",style:"gmail"},
-  {name:"Google Sheets",mark:"▦",style:"sheets"},
-  {name:"n8n",mark:"⌘",style:"n8n"}
- ],
- [
-  {name:"Vapi",mark:"V",style:"openai"},
-  {name:"Retell AI",mark:"R",style:"openai"},
-  {name:"OpenAI",mark:"◎",style:"openai"},
-  {name:"n8n",mark:"⌘",style:"n8n"}
- ],
- [
-  {name:"Supabase",mark:"ϟ",style:"supabase"},
-  {name:"OpenAI",mark:"◎",style:"openai"},
-  {name:"Gmail API",mark:"M",style:"gmail"},
-  {name:"Vector Database",mark:"▦",style:"postgres"}
- ],
- [
-  {name:"n8n",mark:"⌘",style:"n8n"},
-  {name:"Supabase",mark:"ϟ",style:"supabase"},
-  {name:"Docker",mark:"▤",style:"docker"},
-  {name:"VPS",mark:"▥",style:"vps"}
- ]
-
 ];
 
 const displayTitles = [
@@ -2084,12 +2020,6 @@ const displayTitles = [
  "Lead Generation, Web Scraping & RAG",
  "Advanced AI, Deployment & Production Engineering",
  "Freelancing, Client Projects & SaaS"
-
- "Google Cloud & Workspace API Integration",
- "AI Voice & Chat Agent Development",
- "Advanced RAG & Knowledge Base Automation",
- "Real Client Automation & Final Deployment"
-
 ];
 
 function makeToolTile(tool) {
@@ -2232,12 +2162,6 @@ function openModule(index,card){
   ["Apify","Google Maps API","Places API","Supabase Vector"],
   ["Docker","GitHub","VPS","MCP"],
   ["Fiverr","Upwork","GoHighLevel","Supabase"]
-
-  ["Google Cloud","Gmail API","Google Sheets API","n8n"],
-  ["Vapi","Retell AI","OpenAI","n8n"],
-  ["Supabase Vector","OpenAI","Gmail API","Vector Database"],
-  ["n8n","Supabase","Docker","VPS"]
-
  ];
 
  const toolBox = document.getElementById("moduleDetailTools");
