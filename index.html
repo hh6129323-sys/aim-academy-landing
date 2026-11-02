@@ -1569,13 +1569,6 @@ button{font:inherit;cursor:pointer}
 .ghl-logo-word {
   font-size:19px;
 }
-
-.project-overview{margin-top:24px}
-.project-overview[hidden]{display:none!important}
-.project-overview .section-heading{margin-bottom:18px}
-.project-overview .section-heading h2{margin-bottom:8px}
-.project-overview .section-heading p{color:var(--muted);line-height:1.7}
-.project-overview .project-card{min-height:150px}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -1617,14 +1610,14 @@ button{font:inherit;cursor:pointer}
       <ul class="pricing-features">
         <li><span>✓</span> 12 Weeks Structured Training</li>
         <li><span>✓</span> ২৪টি Live Classes</li>
-        <li><span>✓</span> ৮টি Practical Projects</li>
+        <li><span>✓</span> ১২টি Practical Projects</li>
         <li><span>✓</span> ৮০টি Learning Resources</li>
         <li><span>✓</span> ৬০ দিনের Student Support</li>
         <li><span>✓</span> Freelancing & Client Skills</li>
       </ul>
 
       <button class="pricing-enroll" type="button"
-  onclick="showAllModules()">
+  onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
   <span class="pricing-enroll-label">Explore Course</span>
   <span class="pricing-enroll-arrow">→</span>
 </button>
@@ -1715,7 +1708,7 @@ button{font:inherit;cursor:pointer}
 <section class="stats">
   <div class="stat"><div class="stat-icon">📅</div><div><strong>12 Weeks</strong><small>Course Duration</small></div></div>
   <div class="stat"><div class="stat-icon">🎓</div><div><strong>24</strong><small>Live Classes</small></div></div>
-  <div class="stat"><div class="stat-icon">🚀</div><div><strong>8</strong><small>Practical Projects</small></div></div>
+  <div class="stat"><div class="stat-icon">🚀</div><div><strong>12</strong><small>Practical Projects</small></div></div>
   <div class="stat"><div class="stat-icon">💬</div><div><strong>12</strong><small>Support / Q&A Sessions</small></div></div>
 </section>
 
@@ -1727,22 +1720,18 @@ button{font:inherit;cursor:pointer}
   </div>
 
   <div class="module-view-tabs">
-    <button class="module-tab active" onclick="showAllModules()">
+    <button class="module-tab active" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
       🗂 All Modules (12)
     </button>
     <button class="module-tab" onclick="showModuleProjects()">
       🚀 Projects
     </button>
-    <button class="module-tab" onclick="showAllModules()">
+    <button class="module-tab" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
       📈 Learning Path
     </button>
   </div>
 
   <div class="module-grid" id="moduleGrid"></div>
-  <section id="projectOverview" class="project-overview" hidden>
-    <div class="section-heading"><h2>৮টি Practical Projects</h2><p>১২টি মডিউলের শেখা বিষয়গুলো একত্র করে ৮টি বাস্তব প্রজেক্ট তৈরি করবেন।</p></div>
-    <div class="project-grid" id="projectOverviewGrid"></div>
-  </section>
 </section>
 
 
@@ -1893,18 +1882,18 @@ button{font:inherit;cursor:pointer}
 
 <script>
 const modules = [
-{title:"AI & Automation Fundamentals",icon:"⚙️",short:"Automation basics, no-code vs code, n8n and first workflow",desc:"Automation basics, no-code vs code, n8n and first workflow",classes:[["Class 01","Automation Fundamentals & No-Code vs Code",["Understand automation and business use cases","Compare no-code and code-based automation","Map a manual process into clear steps"]],["Class 02","n8n Introduction & First Workflow",["Explore the n8n interface, canvas and nodes","Understand triggers and actions","Build and test your first workflow"]]],project:'Project 01 – First Automated Data Collection System'},
-{title:"n8n & Google Workspace",icon:"⚙️",short:"Workflow design, triggers, data handling and Google tools",desc:"Workflow design, triggers, data handling and Google tools",classes:[["Class 03","Workflow Design & Triggers",["Plan a workflow from trigger to action","Configure nodes and connect workflow steps","Test executions and inspect workflow data"]],["Class 04","Google Workspace Automation",["Connect Google Cloud credentials","Work with Gmail API and Google Sheets API","Build a Gmail-to-Sheets workflow using JSON"]]],project:'Project 01 – First Automated Data Collection System'},
-{title:"API, Webhook & Postman",icon:"⚙️",short:"API fundamentals, HTTP requests and integrations",desc:"API fundamentals, HTTP requests and integrations",classes:[["Class 05","API Fundamentals & HTTP Requests",["Understand endpoints, methods and status codes","Use headers, query parameters and API keys","Test API requests with Postman"]],["Class 06","Webhook & Data Integration",["Create and receive webhook events","Process JSON request and response data","Connect an external API to n8n"]]],project:'Project 02 – Smart Data Management System'},
-{title:"Lead Capture & Data Automation",icon:"⚙️",short:"Forms, lead capture, data processing and reliability",desc:"Forms, lead capture, data processing and reliability",classes:[["Class 07","Lead Capture & Form Automation",["Capture leads through online forms","Send submissions to Google Sheets","Organize and validate lead data"]],["Class 08","Workflow Testing & Error Handling",["Plan trigger, processing and destination steps","Test edge cases and fix common errors","Review and document the workflow"]]],project:'Project 03 – Lead Collection & Notification System'},
-{title:"GoHighLevel CRM & Marketing Automation",icon:"⚙️",short:"CRM setup, pipelines, lead qualification and follow-up",desc:"CRM setup, pipelines, lead qualification and follow-up",classes:[["Class 09","GoHighLevel Account & CRM Setup",["Explore agency and sub-account structure","Manage contacts, conversations and custom fields","Set up pipelines and calendars"]],["Class 10","GHL Workflow Builder & Follow-up",["Build trigger-and-action workflows","Automate lead qualification and pipeline movement","Create email/SMS follow-up and appointment reminders"]]],project:'Project 04 – AI Customer Support Agent'},
-{title:"AI Voice Agent",icon:"⚙️",short:"Voice agent concepts, Vapi, Retell and conversation design",desc:"Voice agent concepts, Vapi, Retell and conversation design",classes:[["Class 11","AI Voice Agent Fundamentals",["Understand voice-agent use cases","Explore Vapi and Retell AI","Design prompts and conversation logic"]],["Class 12","Build & Test a Voice Agent",["Configure an inbound voice-agent flow","Handle customer questions and handoff","Test a demo and review call outcomes"]]],project:'Project 04 – AI Customer Support Agent'},
-{title:"Supabase & Database Automation",icon:"⚙️",short:"Database concepts, tables and n8n integration",desc:"Database concepts, tables and n8n integration",classes:[["Class 13","Supabase Database Fundamentals",["Create a Supabase project","Understand tables, rows, columns and data types","Explore database access and basic security"]],["Class 14","n8n and Supabase Integration",["Connect Supabase with n8n","Insert, update and search records","Build a database-backed automation"]]],project:'Project 05 – AI Sales & Social Media Automation System'},
-{title:"OpenAI API & AI Integration",icon:"⚙️",short:"Prompting, AI nodes, extraction, classification and decisions",desc:"Prompting, AI nodes, extraction, classification and decisions",classes:[["Class 15","OpenAI API & Prompt Engineering",["Understand AI APIs and credentials","Write prompts with clear instructions and context","Connect an AI model using n8n or HTTP Request"]],["Class 16","AI Data Processing & Decisions",["Extract structured information from text","Classify emails, leads and customer messages","Build an AI-to-decision-to-action workflow"]]],project:'Project 05 – AI Sales & Social Media Automation System'},
-{title:"RAG & Knowledge Base",icon:"⚙️",short:"Embeddings, vector databases and document-grounded assistants",desc:"Embeddings, vector databases and document-grounded assistants",classes:[["Class 17","RAG & Knowledge Base Fundamentals",["Understand retrieval-augmented generation","Prepare documents and split text into chunks","Learn embeddings and vector search"]],["Class 18","Build an AI RAG Knowledge Assistant",["Store embeddings in a vector database","Retrieve relevant context for a question","Connect documents or Gmail to an AI assistant"]]],project:'Project 06 – AI Lead Generation & Knowledge Assistant'},
-{title:"Advanced AI Agent Architecture",icon:"⚙️",short:"Tools, memory, decision-making and multi-step agents",desc:"Tools, memory, decision-making and multi-step agents",classes:[["Class 19","AI Agent Architecture & Tools",["Compare standard automation with AI agents","Connect tools, memory and external services","Design agent instructions and decision paths"]],["Class 20","Multi-step Agent Workflow",["Combine agent, API and database actions","Add safety checks and human handoff","Test agent decisions and improve reliability"]]],project:'Project 06 – AI Lead Generation & Knowledge Assistant'},
-{title:"Client Projects & Business Automation",icon:"⚙️",short:"Client discovery, scope, workflow mapping and delivery",desc:"Client discovery, scope, workflow mapping and delivery",classes:[["Class 21","Client Requirements & Workflow Planning",["Identify business problems and automation opportunities","Gather requirements and define project scope","Map lead generation, support or booking workflows"]],["Class 22","Real Business Automation Project",["Choose a practical business use case","Build and integrate the selected workflow","Review errors, optimize and document the solution"]]],project:'Project 07 – Production-ready AI Automation System'},
-{title:"Final Project & Deployment",icon:"⚙️",short:"Production testing, security, deployment and presentation",desc:"Production testing, security, deployment and presentation",classes:[["Class 23","Final Project Build & Testing",["Complete the selected end-to-end project","Test workflows and handle failures","Review credentials, access and basic security"]],["Class 24","Deployment, Documentation & Presentation",["Prepare deployment and monitoring basics","Write user documentation and handover notes","Present the project with a live demonstration"]]],project:'Project 08 – Complete AI Business Automation System'}
+{title:"AI & Automation Fundamentals",icon:"??",short:"Automation basics, no-code vs code, n8n and first workflow",desc:"Automation basics, no-code vs code, n8n and first workflow",classes:[["Class 01","Automation Fundamentals & No-Code vs Code",["Understand automation and business use cases","Compare no-code and code-based automation","Map a manual process into clear steps"]],["Class 02","n8n Introduction & First Workflow",["Explore the n8n interface, canvas and nodes","Understand triggers and actions","Build and test your first workflow"]]],project:"Project 01 ? First Automated Workflow"},
+{title:"n8n & Google Workspace",icon:"??",short:"Workflow design, triggers, data handling and Google tools",desc:"Workflow design, triggers, data handling and Google tools",classes:[["Class 03","Workflow Design & Triggers",["Plan a workflow from trigger to action","Configure nodes and connect workflow steps","Test executions and inspect workflow data"]],["Class 04","Google Workspace Automation",["Connect Google Cloud credentials","Work with Gmail API and Google Sheets API","Build a Gmail-to-Sheets workflow using JSON"]]],project:"Project 02 ? Gmail to Google Sheets Automation"},
+{title:"API, Webhook & Postman",icon:"??",short:"API fundamentals, HTTP requests and integrations",desc:"API fundamentals, HTTP requests and integrations",classes:[["Class 05","API Fundamentals & HTTP Requests",["Understand endpoints, methods and status codes","Use headers, query parameters and API keys","Test API requests with Postman"]],["Class 06","Webhook & Data Integration",["Create and receive webhook events","Process JSON request and response data","Connect an external API to n8n"]]],project:"Project 03 ? API and Webhook Integration"},
+{title:"Lead Capture & Data Automation",icon:"??",short:"Forms, lead capture, data processing and reliability",desc:"Forms, lead capture, data processing and reliability",classes:[["Class 07","Lead Capture & Form Automation",["Capture leads through online forms","Send submissions to Google Sheets","Organize and validate lead data"]],["Class 08","Workflow Testing & Error Handling",["Plan trigger, processing and destination steps","Test edge cases and fix common errors","Review and document the workflow"]]],project:"Project 04 ? Automated Lead Capture System"},
+{title:"GoHighLevel CRM & Marketing Automation",icon:"??",short:"CRM setup, pipelines, lead qualification and follow-up",desc:"CRM setup, pipelines, lead qualification and follow-up",classes:[["Class 09","GoHighLevel Account & CRM Setup",["Explore agency and sub-account structure","Manage contacts, conversations and custom fields","Set up pipelines and calendars"]],["Class 10","GHL Workflow Builder & Follow-up",["Build trigger-and-action workflows","Automate lead qualification and pipeline movement","Create email/SMS follow-up and appointment reminders"]]],project:"Project 05 ? GoHighLevel Lead Follow-up System"},
+{title:"AI Voice Agent",icon:"??",short:"Voice agent concepts, Vapi, Retell and conversation design",desc:"Voice agent concepts, Vapi, Retell and conversation design",classes:[["Class 11","AI Voice Agent Fundamentals",["Understand voice-agent use cases","Explore Vapi and Retell AI","Design prompts and conversation logic"]],["Class 12","Build & Test a Voice Agent",["Configure an inbound voice-agent flow","Handle customer questions and handoff","Test a demo and review call outcomes"]]],project:"Project 06 ? AI Voice Agent Demo"},
+{title:"Supabase & Database Automation",icon:"??",short:"Database concepts, tables and n8n integration",desc:"Database concepts, tables and n8n integration",classes:[["Class 13","Supabase Database Fundamentals",["Create a Supabase project","Understand tables, rows, columns and data types","Explore database access and basic security"]],["Class 14","n8n and Supabase Integration",["Connect Supabase with n8n","Insert, update and search records","Build a database-backed automation"]]],project:"Project 07 ? Supabase Data Automation"},
+{title:"OpenAI API & AI Integration",icon:"??",short:"Prompting, AI nodes, extraction, classification and decisions",desc:"Prompting, AI nodes, extraction, classification and decisions",classes:[["Class 15","OpenAI API & Prompt Engineering",["Understand AI APIs and credentials","Write prompts with clear instructions and context","Connect an AI model using n8n or HTTP Request"]],["Class 16","AI Data Processing & Decisions",["Extract structured information from text","Classify emails, leads and customer messages","Build an AI-to-decision-to-action workflow"]]],project:"Project 08 ? AI-powered Email Classifier"},
+{title:"RAG & Knowledge Base",icon:"??",short:"Embeddings, vector databases and document-grounded assistants",desc:"Embeddings, vector databases and document-grounded assistants",classes:[["Class 17","RAG & Knowledge Base Fundamentals",["Understand retrieval-augmented generation","Prepare documents and split text into chunks","Learn embeddings and vector search"]],["Class 18","Build an AI RAG Knowledge Assistant",["Store embeddings in a vector database","Retrieve relevant context for a question","Connect documents or Gmail to an AI assistant"]]],project:"Project 09 ? RAG Knowledge Assistant"},
+{title:"Advanced AI Agent Architecture",icon:"??",short:"Tools, memory, decision-making and multi-step agents",desc:"Tools, memory, decision-making and multi-step agents",classes:[["Class 19","AI Agent Architecture & Tools",["Compare standard automation with AI agents","Connect tools, memory and external services","Design agent instructions and decision paths"]],["Class 20","Multi-step Agent Workflow",["Combine agent, API and database actions","Add safety checks and human handoff","Test agent decisions and improve reliability"]]],project:"Project 10 ? Multi-step Business AI Agent"},
+{title:"Client Projects & Business Automation",icon:"??",short:"Client discovery, scope, workflow mapping and delivery",desc:"Client discovery, scope, workflow mapping and delivery",classes:[["Class 21","Client Requirements & Workflow Planning",["Identify business problems and automation opportunities","Gather requirements and define project scope","Map lead generation, support or booking workflows"]],["Class 22","Real Business Automation Project",["Choose a practical business use case","Build and integrate the selected workflow","Review errors, optimize and document the solution"]]],project:"Project 11 ? Client-ready Business Automation"},
+{title:"Final Project & Deployment",icon:"??",short:"Production testing, security, deployment and presentation",desc:"Production testing, security, deployment and presentation",classes:[["Class 23","Final Project Build & Testing",["Complete the selected end-to-end project","Test workflows and handle failures","Review credentials, access and basic security"]],["Class 24","Deployment, Documentation & Presentation",["Prepare deployment and monitoring basics","Write user documentation and handover notes","Present the project with a live demonstration"]]],project:"Project 12 ? Complete Automation Solution"}
 ];
 const grid=document.getElementById("moduleGrid");
 
@@ -1938,34 +1927,67 @@ const displayTitles = [
 ];
 
 function makeToolTile(tool) {
- const logoDomains = {
-  openai:"openai.com",
-  gemini:"gemini.google.com",
-  claude:"anthropic.com",
-  n8n:"n8n.io",
-  sheets:"sheets.google.com",
-  javascript:"javascript.com",
-  postman:"postman.com",
-  supabase:"supabase.com",
-  postgres:"postgresql.org",
-  gmail:"gmail.com",
-  langchain:"langchain.com",
-  ghl:"gohighlevel.com",
-  meta:"meta.com",
-  whatsapp:"whatsapp.com",
-  telegram:"telegram.org",
-  apify:"apify.com",
-  maps:"maps.google.com",
-  places:"developers.google.com",
-  docker:"docker.com",
-  github:"github.com",
-  vps:"digitalocean.com",
-  fiverr:"fiverr.com",
-  upwork:"upwork.com"
+ const brands = {
+  "n8n":["n8n","n8n.io"],
+  "Make.com":["make","make.com"],
+  "Pabbly":["","pabbly.com"],
+  "Google Forms":["googleforms","forms.google.com"],
+  "Google Cloud":["googlecloud","cloud.google.com"],
+  "Gmail API":["gmail","gmail.com"],
+  "Google Sheets API":["googlesheets","sheets.google.com"],
+  "JSON":["json","json.org"],
+  "Postman":["postman","postman.com"],
+  "HTTP Request":["","n8n.io"],
+  "Webhook":["webhooks","n8n.io"],
+  "Shopify API":["shopify","shopify.com"],
+  "Google Sheets":["googlesheets","sheets.google.com"],
+  "Email Automation":["gmail","gmail.com"],
+  "GoHighLevel":["","gohighlevel.com"],
+  "ManyChat":["","manychat.com"],
+  "Facebook":["facebook","facebook.com"],
+  "Instagram":["instagram","instagram.com"],
+  "Vapi":["","vapi.ai"],
+  "Retell AI":["","retellai.com"],
+  "OpenAI API":["openai","openai.com"],
+  "Voice Agent":["openai","openai.com"],
+  "Supabase":["supabase","supabase.com"],
+  "PostgreSQL":["postgresql","postgresql.org"],
+  "Database API":["supabase","supabase.com"],
+  "Prompt Engineering":["openai","openai.com"],
+  "n8n AI Node":["n8n","n8n.io"],
+  "RAG":["langchain","langchain.com"],
+  "Embeddings":["openai","openai.com"],
+  "Supabase Vector":["supabase","supabase.com"],
+  "Knowledge Base":["langchain","langchain.com"],
+  "AI Agent":["openai","openai.com"],
+  "Tools":["n8n","n8n.io"],
+  "Memory":["langchain","langchain.com"],
+  "Google Maps":["googlemaps","maps.google.com"],
+  "Apify":["apify","apify.com"],
+  "Workflow Automation":["n8n","n8n.io"],
+  "GitHub":["github","github.com"],
+  "Deployment":["render","render.com"],
+  "Monitoring":["grafana","grafana.com"],
+  "Documentation":["github","github.com"],
+  "Manus AI":["","manus.im"],
+  "Gamma AI":["","gamma.app"],
+  "Pictory":["","pictory.ai"],
+  "Google Flow":["google","labs.google"],
+  "Skool":["","skool.com"],
+  "YouTube Automation":["youtube","youtube.com"],
+  "Client Acquisition":["upwork","upwork.com"]
  };
 
- const domain = logoDomains[tool.style] || "google.com";
- const logoUrl = "https://www.google.com/s2/favicons?domain=" + domain + "&sz=128";
+ const brand = brands[tool.name] || ["","google.com"];
+ const slug = brand[0];
+ const domain = brand[1];
+
+ const logoUrl = slug
+  ? "https://cdn.simpleicons.org/" + slug
+  : "https://" + domain + "/favicon.ico";
+
+ const fallbackUrl =
+  "https://www.google.com/s2/favicons?domain=" + domain + "&sz=128";
 
  return `
   <div class="module-tool-tile">
@@ -1974,7 +1996,12 @@ function makeToolTile(tool) {
          src="${logoUrl}"
          alt="${tool.name} logo"
          loading="lazy"
-         onerror="this.style.display='none'">
+         onerror="
+          if (!this.dataset.fallback) {
+           this.dataset.fallback='1';
+           this.src='${fallbackUrl}';
+          }
+         ">
    </span>
    <span class="module-tool-name">${tool.name}</span>
   </div>
@@ -2011,7 +2038,7 @@ modules.forEach((m,i)=>{
 
    <span class="ghl-feature-logo">
     <img class="ghl-real-logo"
-         src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=128"
+         src="https://gohighlevel.com/favicon.ico"
          alt="GoHighLevel logo">
     <strong class="ghl-logo-word">GoHighLevel</strong>
     <span>CRM & Marketing Automation</span>
@@ -2053,48 +2080,18 @@ modules.forEach((m,i)=>{
  grid.appendChild(card);
 });
 
-function showAllModules() {
- const overview = document.getElementById("projectOverview");
- const moduleGrid = document.getElementById("moduleGrid");
- if (overview) overview.hidden = true;
- if (moduleGrid) moduleGrid.hidden = false;
- document.querySelectorAll(".module-tab").forEach((tab,i)=>tab.classList.toggle("active",i===0));
- document.getElementById("modules").scrollIntoView({behavior:"smooth"});
-}
-
 function showModuleProjects() {
- const overview = document.getElementById("projectOverview");
- const moduleGrid = document.getElementById("moduleGrid");
- const detail = document.getElementById("moduleDetails");
- const projects = [
-  ["01","First Automated Data Collection System","Form থেকে তথ্য সংগ্রহ, validation এবং workflow automation"],
-  ["02","Smart Data Management System","Google Sheets, database ও structured data management"],
-  ["03","Lead Collection & Notification System","Lead capture, processing এবং automated notification"],
-  ["04","AI Customer Support Agent","AI দিয়ে customer query handling ও support workflow"],
-  ["05","AI Sales & Social Media Automation System","Sales follow-up এবং social media workflow automation"],
-  ["06","AI Lead Generation & Knowledge Assistant","Lead research, RAG এবং knowledge-based assistant"],
-  ["07","Production-ready AI Automation System","Testing, error handling, deployment ও monitoring"],
-  ["08","Complete AI Business Automation System","একাধিক workflow যুক্ত করে end-to-end business automation"]
- ];
- document.querySelectorAll(".module-tab").forEach((tab,i)=>tab.classList.toggle("active",i===1));
- if (moduleGrid) moduleGrid.hidden = true;
- if (detail) detail.classList.remove("show");
- overview.hidden = false;
- document.getElementById("projectOverviewGrid").innerHTML = projects.map(p => `
-  <article class="project-card"><div class="project-number">PROJECT ${p[0]}</div><h3>${p[1]}</h3><p>${p[2]}</p></article>
- `).join("");
- overview.scrollIntoView({behavior:"smooth",block:"start"});
+ const firstCard=document.querySelector(".aim-reference-module-card");
+ if(firstCard) {
+  openModule(0,firstCard);
+ }
 }
 
 function openModule(index,card){
  const m=modules[index];
- const overview=document.getElementById("projectOverview");
- if(overview) overview.hidden=true;
- const moduleGrid=document.getElementById("moduleGrid");
- if(moduleGrid) moduleGrid.hidden=false;
  document.querySelectorAll(".module-card").forEach(c=>c.classList.remove("selected"));
  if(card) card.classList.add("selected");
- document.getElementById("detailBadge").textContent=`MODULE 0${index+1} · ${m.classes.length} CLASSES`;
+ document.getElementById("detailBadge").textContent=`MODULE 0${index+1} ? ${m.classes.length} CLASSES`;
  document.getElementById("detailTitle").textContent=m.title;
  document.getElementById("detailDescription").textContent=m.desc;
 
@@ -2106,11 +2103,11 @@ function openModule(index,card){
 ["GoHighLevel","ManyChat","Facebook","Instagram"],
 ["Vapi","Retell AI","OpenAI API","Voice Agent"],
 ["Supabase","PostgreSQL","n8n","Database API"],
-["OpenAI API","Manus AI","Gamma AI","Prompt Engineering"],
+["OpenAI API","Prompt Engineering","n8n AI Node","HTTP Request"],
 ["RAG","Embeddings","Supabase Vector","Knowledge Base"],
 ["AI Agent","Tools","Memory","n8n"],
-["Google Maps","Apify","GoHighLevel","Client Acquisition"],
-["GitHub","Deployment","Monitoring","Documentation","Pictory","Google Flow","Skool","YouTube Automation"]
+["Google Maps","Apify","GoHighLevel","Workflow Automation"],
+["GitHub","Deployment","Monitoring","Documentation"]
  ];
  const toolBox = document.getElementById("moduleDetailTools");
  toolBox.innerHTML = `
@@ -2134,7 +2131,7 @@ function openModule(index,card){
   }
   supportInfo.innerHTML = `
     <strong>Weekly Support / Q&A Session</strong>
-    <p style="margin:8px 0 0;line-height:1.7;">প্রতি সপ্তাহে ২টি Regular Class-এর পাশাপাশি ১টি Support/Q&A Session থাকবে। এখানে প্রশ্ন, workflow সমস্যা সমাধান এবং hands-on practice করা হবে।</p>
+    <p style="margin:8px 0 0;line-height:1.7;">????? ??????? ??? Regular Class-?? ???????? ??? Support/Q&A Session ?????? ????? ??????, workflow ?????? ?????? ??? hands-on practice ??? ????</p>
   `;
   document.getElementById("projectName").textContent=m.project;
  document.getElementById("moduleDetails").classList.add("show");
