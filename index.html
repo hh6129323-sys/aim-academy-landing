@@ -1,0 +1,811 @@
+﻿<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Automation Mastery | AIM Academy</title>
+<style>
+:root {
+  --red:#ed123c; --red-dark:#c90832; --ink:#101d35;
+  --muted:#64748b; --bg:#f3f5fa; --white:#fff;
+  --line:#e4e9f2; --green:#079b60;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button{font:inherit;cursor:pointer}
+.layout{display:flex;min-height:100vh}
+.sidebar{
+  width:270px;flex-shrink:0;background:linear-gradient(160deg,#f01640,#bd0730);
+  color:white;padding:24px 18px;display:flex;flex-direction:column;
+}
+.brand{padding:8px 8px 35px;display:flex;align-items:center;gap:12px}
+.brand-icon{font-size:35px}
+.brand h2{font-size:22px;margin:0}
+.brand p{margin:4px 0 0;font-size:12px;opacity:.85}
+.side-link{
+  display:flex;align-items:center;gap:13px;color:white;text-decoration:none;
+  padding:15px 16px;border-radius:12px;margin-bottom:9px;font-weight:600;
+  border-left:4px solid transparent;transition:.2s;
+}
+.side-link:hover,.side-link.active{background:rgba(255,255,255,.15);border-left-color:white}
+.side-link span{font-size:20px;width:23px;text-align:center}
+.sidebar-bottom{margin-top:auto;background:rgba(255,255,255,.12);padding:17px;border-radius:14px}
+.sidebar-bottom strong{display:block;margin-bottom:7px}
+.sidebar-bottom p{font-size:13px;line-height:1.6;margin:0;opacity:.9}
+.main{flex:1;min-width:0}
+.topbar{
+  height:70px;background:white;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;padding:0 34px;
+  position:sticky;top:0;z-index:5;
+}
+.nav{display:flex;gap:26px}
+.nav button{border:0;background:none;color:var(--ink);font-weight:600;padding:24px 0}
+.nav button:hover{color:var(--red)}
+.enroll{background:var(--red);color:white;border:0;border-radius:10px;padding:12px 20px;font-weight:700}
+.content{max-width:1500px;margin:auto;padding:30px 34px 60px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+.eyebrow{display:inline-block;background:#ffe6ec;color:var(--red-dark);padding:9px 14px;border-radius:30px;font-size:13px;font-weight:700}
+.hero h1{font-size:clamp(32px,4vw,54px);line-height:1.13;margin:17px 0 7px;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero h3{font-size:21px;margin:0 0 16px;color:#34445e}
+.hero p{font-size:17px;color:#52627a;line-height:1.85;max-width:650px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.primary,.secondary{padding:14px 21px;border-radius:12px;font-weight:700}
+.primary{background:var(--red);color:white;border:0;box-shadow:0 7px 17px #ed123c30}
+.secondary{background:white;color:var(--ink);border:1px solid var(--line)}
+.hero-art{
+  min-height:260px;border-radius:25px;background:linear-gradient(135deg,#fff0f3,#ffe3e9);
+  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
+.art-center{background:white;border:1px solid #f4cbd4;border-radius:20px;padding:30px 42px;text-align:center;box-shadow:0 12px 35px #9f16301a;z-index:1}
+.art-center .n8n{font-size:43px;font-weight:800;color:var(--ink)}
+.art-center p{margin:5px 0 0;font-weight:600;color:var(--red)}
+.orbit{position:absolute;font-size:32px;background:white;border-radius:15px;padding:12px;box-shadow:0 6px 20px #0000000c}
+.o1{top:25px;left:12%}.o2{top:25px;right:12%}.o3{bottom:25px;left:13%}.o4{bottom:25px;right:13%}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:30px 0 38px}
+.stat,.card,.panel{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 18px #15213b08}
+.stat{padding:19px;display:flex;align-items:center;gap:14px}
+.stat-icon,.module-icon{width:54px;height:54px;border-radius:50%;background:#fff0f3;color:var(--red);display:grid;place-items:center;font-size:25px;flex-shrink:0}
+.stat strong{font-size:24px;display:block}
+.stat small{color:var(--muted);font-size:13px}
+.section-heading{margin:0 0 19px}
+.section-heading h2{font-size:29px;margin:0 0 9px}
+.underline{width:42px;height:4px;background:var(--red);border-radius:5px}
+.module-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.module-card{
+  border:1px solid var(--line);background:white;border-radius:16px;padding:18px;
+  display:flex;gap:12px;text-align:left;color:var(--ink);min-height:145px;
+  box-shadow:0 5px 18px #15213b08;transition:.2s;
+}
+.module-card:hover{transform:translateY(-3px);border-color:#ff9bad;box-shadow:0 10px 25px #ed123c12}
+.module-card .module-icon{width:48px;height:48px;font-size:22px}
+.module-card h3{font-size:15px;line-height:1.45;margin:2px 0 8px}
+.module-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+.module-card .number{font-size:11px;color:var(--red);font-weight:800;margin-bottom:5px}
+.module-card.selected{border:2px solid #ffb6c3;background:#fff5f7}
+.details{display:none;margin-top:25px;scroll-margin-top:90px}
+.details.show{display:block}
+.detail-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:17px}
+.back{background:white;border:1px solid var(--line);padding:11px 15px;border-radius:10px;font-weight:700;color:var(--ink)}
+.detail-title{font-size:29px;margin:5px 0}
+.detail-description{color:var(--muted);line-height:1.7}
+.class-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
+.class-card{background:white;border:1px solid var(--line);border-radius:15px;padding:20px}
+.class-card .class-no{color:var(--red);font-size:12px;font-weight:800}
+.class-card h3{font-size:18px;margin:9px 0 12px}
+.class-card ul{padding-left:19px;margin:0;color:#52627a;line-height:1.9;font-size:14px}
+.project-box{margin-top:18px;background:#fff0f3;border:1px solid #ffd0d9;border-radius:15px;padding:20px}
+.project-box h3{margin:0 0 7px;color:var(--red-dark)}
+.project-box p{margin:0;line-height:1.6}
+.benefits{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px}
+.benefit{background:white;border:1px solid var(--line);padding:17px 10px;border-radius:14px;text-align:center;font-weight:600;font-size:13px}
+.benefit span{display:block;font-size:24px;color:var(--red);margin-bottom:7px}
+.footer{text-align:center;color:var(--muted);font-size:13px;padding:35px 10px 5px}
+.mobile-menu{display:none;background:none;border:0;font-size:24px}
+@media(max-width:1100px){
+ .sidebar{width:230px}.module-grid{grid-template-columns:repeat(2,1fr)}
+ .benefits{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:760px){
+ .layout{display:block}.sidebar{display:none;width:100%;padding:15px}
+ .sidebar.open{display:flex}.brand{padding-bottom:15px}
+ .topbar{height:62px;padding:0 15px}.mobile-menu{display:block}
+ .nav{display:none}.content{padding:22px 15px 40px}
+ .hero{grid-template-columns:1fr}.hero-art{min-height:210px}
+ .stats{grid-template-columns:repeat(2,1fr);gap:10px}
+ .stat{padding:13px}.stat strong{font-size:20px}
+ .module-grid{grid-template-columns:1fr}.module-card{min-height:115px}
+ .class-grid{grid-template-columns:1fr}.benefits{grid-template-columns:repeat(2,1fr)}
+ .hero h1{font-size:36px}
+}
+
+/* ===== AIM ACADEMY ADMISSION SECTION ===== */
+.admission-section{margin-top:40px}
+.admission-heading{font-size:29px;margin-bottom:8px}
+.admission-subtitle{color:var(--muted);line-height:1.7;margin-bottom:22px}
+.admission-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.admission-card{background:white;border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:0 7px 24px #15213b08}
+.fee-card{background:linear-gradient(145deg,#e9103a,#b80730);color:white;border-radius:18px;padding:27px;box-shadow:0 12px 28px #ed123c25}
+.fee-label{font-size:14px;opacity:.9}
+.fee-amount{font-size:48px;font-weight:800;margin:8px 0}
+.fee-details{display:grid;gap:13px;margin:20px 0}
+.fee-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #ffffff35;padding-bottom:11px;font-size:14px}
+.admission-button{display:block;text-align:center;background:white;color:#c90832;padding:14px;border-radius:11px;text-decoration:none;font-weight:800;margin-top:20px}
+.admission-button:hover{background:#fff0f3}
+.instructor-card{display:flex;align-items:center;gap:18px}
+.instructor-avatar{width:75px;height:75px;border-radius:50%;display:grid;place-items:center;background:#ffe7ed;color:var(--red);font-size:32px;flex-shrink:0}
+.instructor-name{font-size:22px;margin:0 0 5px}
+.instructor-role{color:var(--muted);font-size:14px}
+.contact-list{display:grid;gap:13px;margin-top:20px}
+.contact-item{display:flex;align-items:center;gap:13px;padding:13px;background:#f8f9fc;border:1px solid var(--line);border-radius:12px}
+.contact-icon{width:40px;height:40px;border-radius:11px;background:#ffe9ee;color:var(--red);display:grid;place-items:center;font-size:20px}
+.contact-item small{display:block;color:var(--muted);margin-bottom:3px}
+.contact-item a{color:var(--ink);font-weight:650;text-decoration:none;overflow-wrap:anywhere}
+.contact-item a:hover{color:var(--red)}
+.payment-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+.payment-tag{background:#fff0f3;color:#c90832;padding:9px 14px;border-radius:9px;font-weight:700;font-size:13px}
+.admission-note{color:var(--muted);font-size:12px;line-height:1.7;margin-top:16px}
+@media(max-width:760px){
+ .admission-grid{grid-template-columns:1fr}
+ .admission-heading{font-size:25px}
+ .fee-amount{font-size:42px}
+}
+
+/* ===== AIM LEARNING JOURNEY ===== */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.why-card{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 5px 18px #15213b08}
+.why-icon{width:49px;height:49px;display:grid;place-items:center;border-radius:13px;background:#fff0f3;color:var(--red);font-size:25px;margin-bottom:14px}
+.why-card h3{font-size:17px;margin:0 0 9px}
+.why-card p{color:var(--muted);font-size:14px;line-height:1.7;margin:0}
+.project-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.project-card{background:white;border:1px solid var(--line);border-radius:16px;padding:19px;transition:.2s}
+.project-card:hover{transform:translateY(-3px);border-color:#ff9bad}
+.project-number{font-size:12px;color:var(--red);font-weight:800}
+.project-card h3{font-size:16px;line-height:1.45;margin:9px 0}
+.project-card p{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
+.project-icon{font-size:26px;margin-bottom:8px}
+.journey-list{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.week-card{background:white;border:1px solid var(--line);border-radius:15px;padding:19px;position:relative}
+.week-card .week{font-size:12px;color:var(--red);font-weight:800}
+.week-card h3{font-size:16px;margin:9px 0}
+.week-card p{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
+.section-intro{color:var(--muted);line-height:1.7;margin:-5px 0 20px}
+@media(max-width:1050px){
+ .project-grid,.journey-list{grid-template-columns:repeat(2,1fr)}
+ .why-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+ .project-grid,.journey-list,.why-grid{grid-template-columns:1fr}
+}
+
+/* AIM ACADEMY BRAND TAGLINE */
+.aim-tagline {
+    margin: 25px 0;
+    padding: 28px 20px;
+    background: linear-gradient(120deg,#fff0f3,#fff8fa);
+    border: 1px solid #ffd5de;
+    border-radius: 16px;
+    text-align: center;
+}
+.aim-tagline-label {
+    color: #e8103b;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+.aim-tagline h3 {
+    color: #101d35;
+    font-size: 21px;
+    font-weight: 800;
+    margin: 6px 0;
+}
+.aim-tagline h3:last-child {
+    color: #d20b36;
+}
+
+/* ===== FINAL DARK TEXT DESIGN ===== */
+.module-card h3 {
+    color: #101d35 !important;
+    font-weight: 800 !important;
+}
+.module-card p {
+    color: #263750 !important;
+    font-weight: 600 !important;
+}
+.detail-title,
+.section-heading h2 {
+    color: #101d35 !important;
+    font-weight: 800 !important;
+}
+.detail-description {
+    color: #263750 !important;
+    font-weight: 600 !important;
+}
+.class-card h3 {
+    color: #101d35 !important;
+    font-weight: 800 !important;
+}
+.class-card li,
+.class-card ul {
+    color: #263750 !important;
+    font-weight: 600 !important;
+    line-height: 1.9 !important;
+}
+.class-no {
+    color: #d40032 !important;
+    font-weight: 800 !important;
+}
+.project-box h3 {
+    color: #bd092f !important;
+    font-weight: 800 !important;
+}
+.project-box p {
+    color: #17263e !important;
+    font-weight: 600 !important;
+}
+
+/* ===== PROFESSIONAL STUDENT SUPPORT ===== */
+.support-professional {
+    background: white;
+    border: 1px solid #e1e6ef;
+    border-radius: 18px;
+    padding: 27px;
+    box-shadow: 0 8px 25px #15213b08;
+}
+.support-heading {
+    color: #101d35;
+    font-size: 23px;
+    font-weight: 800;
+    margin: 0 0 13px;
+}
+.support-lead {
+    color: #263750;
+    font-size: 15px;
+    font-weight: 550;
+    line-height: 1.95;
+}
+.support-features {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 13px;
+    margin: 22px 0;
+}
+.support-feature {
+    background: #f8f9fc;
+    border: 1px solid #e4e9f2;
+    border-radius: 13px;
+    padding: 17px;
+    color: #263750;
+    font-size: 14px;
+    font-weight: 550;
+    line-height: 1.8;
+}
+.support-feature span {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+.support-feature strong {
+    color: #101d35;
+    font-weight: 800;
+}
+.support-duration {
+    background: linear-gradient(110deg,#e9103a,#bd092f);
+    color: white;
+    border-radius: 15px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.support-duration strong {
+    font-size: 34px;
+}
+.support-duration p {
+    color: white;
+    margin: 5px 0 0;
+}
+.support-promise {
+    background: #fff0f3;
+    border-left: 4px solid #e9103a;
+    border-radius: 9px;
+    padding: 20px;
+    margin-top: 20px;
+    color: #263750;
+    font-weight: 550;
+    line-height: 1.95;
+}
+.support-promise strong {
+    color: #b90832;
+    font-weight: 800;
+}
+.aim-tagline {
+    margin-top: 22px;
+    padding: 25px;
+    background: #fff3f5;
+    border: 1px solid #ffd5de;
+    border-radius: 15px;
+    text-align: center;
+}
+.aim-tagline-label {
+    color: #e8103b;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+.aim-tagline h3 {
+    color: #101d35;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 7px 0;
+}
+.aim-tagline h3:last-child {
+    color: #d20b36;
+}
+@media(max-width:650px) {
+    .support-features {
+        grid-template-columns: 1fr;
+    }
+    .support-professional {
+        padding: 17px;
+    }
+}
+
+/* ===== AIM ACADEMY PROFESSIONAL BRAND BANNER ===== */
+.aim-brand-banner {
+    margin: 10px 26px 0;
+    min-height: 68px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: nowrap;
+    background: linear-gradient(110deg,#fff0f4,#ffffff 48%,#ffe9ef);
+    border: 1px solid #ffb7c8;
+    border-radius: 15px;
+    box-shadow: 0 5px 16px rgba(201,8,50,.10);
+    position: relative;
+    overflow: hidden;
+}
+
+.aim-brand-banner::before,
+.aim-brand-banner::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    top: 0;
+    opacity: .35;
+    pointer-events: none;
+}
+
+.aim-brand-banner::before {
+    left: 0;
+    background: linear-gradient(90deg,#ffc8d5,transparent);
+}
+
+.aim-brand-banner::after {
+    right: 0;
+    background: linear-gradient(270deg,#ffc8d5,transparent);
+}
+
+.aim-brand-cap {
+    font-size: 29px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.aim-brand-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    flex-wrap: nowrap;
+    position: relative;
+    z-index: 1;
+}
+
+.aim-brand-text span {
+    color: #14213d;
+    font-size: clamp(14px,1.65vw,23px);
+    font-weight: 800;
+    white-space: nowrap;
+    letter-spacing: -.4px;
+}
+
+.aim-brand-separator {
+    color: #ed123c !important;
+    font-weight: 500 !important;
+}
+
+.aim-brand-highlight {
+    color: white !important;
+    background: linear-gradient(110deg,#ed123c,#c90832);
+    padding: 8px 17px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(201,8,50,.18);
+}
+
+@media(max-width:1000px) {
+    .aim-brand-banner {
+        margin: 10px 16px 0;
+        padding: 12px;
+        gap: 9px;
+    }
+    .aim-brand-text {
+        gap: 8px;
+    }
+    .aim-brand-text span {
+        font-size: 15px;
+    }
+}
+
+@media(max-width:650px) {
+    .aim-brand-banner {
+        margin: 10px 12px 0;
+        padding: 14px 10px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    .aim-brand-cap {
+        font-size: 23px;
+    }
+    .aim-brand-text {
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+    .aim-brand-text span {
+        font-size: 14px;
+        white-space: normal;
+        text-align: center;
+    }
+    .aim-brand-highlight {
+        padding: 6px 11px;
+    }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-icon">🤖</div>
+    <div><h2>AIM Academy</h2><p>Learn | Build | Automate</p></div>
+  </div>
+  <a class="side-link active" href="#" onclick="showHome();return false"><span>⌂</span> Course Overview</a>
+  <a class="side-link" href="#modules" onclick="showHome();return false"><span>▦</span> Modules & Classes</a>
+  <a class="side-link" href="#projects" onclick="showHome();return false"><span>▱</span> Projects (8)</a>
+  <a class="side-link" href="#resources" onclick="showHome();return false"><span>▤</span> Resources (80)</a>
+  <a class="side-link" href="#support" onclick="showHome();return false"><span>♧</span> Support & Community</a>
+  <a class="side-link" href="#certificate" onclick="showHome();return false"><span>✧</span> Certificate</a>
+  <div class="sidebar-bottom">
+    <strong>🚀 Start Your Journey</strong>
+    <p>শূন্য থেকে বাস্তব AI Automation System তৈরি শেখার যাত্রা শুরু করুন।</p>
+  </div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <button class="mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+  <nav class="nav">
+    <button onclick="showHome()">Home</button>
+    <button onclick="showHome()">Course</button>
+    <button onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">Modules</button>
+    
+    
+    <button onclick="document.getElementById('support').scrollIntoView({behavior:'smooth'})">Support</button>
+  </nav>
+  <button class="enroll" onclick="document.getElementById('admission').scrollIntoView({behavior:'smooth'})">✦ Enroll Now</button>
+</header>
+<div class="aim-brand-banner">
+    <div class="aim-brand-cap">🎓</div>
+    <div class="aim-brand-text">
+        <span>Learn with Confidence</span>
+        <span class="aim-brand-separator">|</span>
+        <span>Build with Support</span>
+        <span class="aim-brand-separator">|</span>
+        <span class="aim-brand-highlight">Grow with AIM Academy</span>
+    </div>
+</div>
+<div class="content">
+<section class="hero" id="home">
+  <div>
+    <span class="eyebrow">⚡ LIVE + RECORDED TRAINING</span>
+    <h1>AI Automation <em>Mastery</em></h1>
+    <h3>From Zero to Real-World AI Systems</h3>
+    <p>শিখুন AI, Automation, n8n এবং বাস্তব ব্যবসার জন্য Intelligent System তৈরি, Deploy ও Manage করা। Beginner থেকে Production-level দক্ষতা অর্জনের যাত্রা শুরু করুন।</p>
+    <div class="actions">
+      <button class="primary" onclick="alert('ভর্তির তথ্য শিগগিরই প্রকাশ করা হবে।')">Enroll Now →</button>
+      <button class="secondary" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">▶ Course Curriculum</button>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="orbit o1">📧</div><div class="orbit o2">💬</div>
+    <div class="orbit o3">📊</div><div class="orbit o4">🗄️</div>
+    <div class="art-center"><div class="n8n">⌘ n8n</div><p>AI + Automation + Business</p></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><div class="stat-icon">▣</div><div><strong>৮ সপ্তাহ</strong><small>কোর্সের মেয়াদ</small></div></div>
+  <div class="stat"><div class="stat-icon">▷</div><div><strong>২৪টি</strong><small>লাইভ ক্লাস</small></div></div>
+  <div class="stat"><div class="stat-icon">▱</div><div><strong>৮টি</strong><small>বাস্তব প্রজেক্ট</small></div></div>
+  <div class="stat"><div class="stat-icon">▤</div><div><strong>৮০টি</strong><small>লার্নিং রিসোর্স</small></div></div>
+</section>
+
+<section id="modules">
+  <div class="section-heading"><h2>কোর্সে কী কী শিখবেন?</h2><div class="underline"></div></div>
+  <p style="color:var(--muted);margin-bottom:18px">প্রতিটি মডিউলে ক্লিক করে বিস্তারিত ক্লাস ও শেখার বিষয়গুলো দেখুন।</p>
+  <div class="module-grid" id="moduleGrid"></div>
+</section>
+
+<section class="details" id="moduleDetails">
+  <div class="detail-top">
+    <div><span class="eyebrow" id="detailBadge">MODULE DETAILS</span><h2 class="detail-title" id="detailTitle"></h2><p class="detail-description" id="detailDescription"></p></div>
+    <button class="back" onclick="showHome()">← সব মডিউল</button>
+  </div>
+  <div class="class-grid" id="classGrid"></div>
+  <div class="project-box"><h3>🚀 Practical Project</h3><p id="projectName"></p></div>
+</section>
+
+<!-- AIM-LEARNING-JOURNEY -->
+
+
+
+
+
+
+
+
+
+<section id="support" class="admission-section">
+  <div class="section-heading">
+    <h2>৬০ দিনের Dedicated Student Support</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="support-professional">
+
+    <h3 class="support-heading">
+      আপনার শেখার যাত্রায় আমরা আছি আপনার পাশে
+    </h3>
+
+    <p class="support-lead">
+      আমরা শুধু একটি কোর্স বিক্রি করে আমাদের দায়িত্ব শেষ করতে চাই না।
+      আপনি যে অর্থ ও সময় বিনিয়োগ করে আমাদের কোর্সে ভর্তি হয়েছেন,
+      তার যথাযথ মূল্য পাওয়াটা আমাদের কাছে অত্যন্ত গুরুত্বপূর্ণ।
+    </p>
+
+    <p class="support-lead">
+      আমাদের উদ্দেশ্য আপনাকে শুধু AI Automation-এর বিষয়গুলো
+      দেখিয়ে দেওয়া নয়; বরং প্রতিটি বিষয় ভালোভাবে বুঝিয়ে,
+      হাতে-কলমে Practice করিয়ে এবং বাস্তব Automation System
+      তৈরি করার মতো দক্ষ করে তোলা।
+    </p>
+
+    <h3 class="support-heading">আপনার জন্য আমাদের Support সুবিধা</h3>
+
+    <div class="support-features">
+
+      <div class="support-feature">
+        <span>🎓</span>
+        <strong>Live Class-এর পর Support Class</strong><br>
+        প্রতিটি মূল Live Class-এর পাশাপাশি অতিরিক্ত Support Class
+        থাকবে। সেখানে শেখানো বিষয়গুলো পুনরায় বুঝিয়ে দেওয়া,
+        প্রশ্নের উত্তর এবং Practical Practice করানো হবে।
+      </div>
+
+      <div class="support-feature">
+        <span>💬</span>
+        <strong>Daily Question & Answer Support</strong><br>
+        প্রতিদিন শেখার যেকোনো সমস্যা বা প্রশ্ন নিয়ে আমাদের সঙ্গে
+        যোগাযোগ করতে পারবেন। আমরা আপনার প্রশ্নের উত্তর ও
+        প্রয়োজনীয় নির্দেশনা দেওয়ার চেষ্টা করব।
+      </div>
+
+      <div class="support-feature">
+        <span>⚙️</span>
+        <strong>Technical & Debugging Support</strong><br>
+        n8n Workflow, API, Webhook, Database ও AI Agent তৈরি
+        করতে গিয়ে কোনো Error হলে ধাপে ধাপে সমাধানে সহযোগিতা।
+      </div>
+
+      <div class="support-feature">
+        <span>🚀</span>
+        <strong>Practical Project Guidance</strong><br>
+        ৮টি Practical Project তৈরি ও সম্পন্ন করার সময়
+        প্রয়োজনীয় নির্দেশনা, Workflow Review ও সহযোগিতা।
+      </div>
+
+      <div class="support-feature">
+        <span>❤️</span>
+        <strong>Friendly & Humble Communication</strong><br>
+        আমাদের সঙ্গে যোগাযোগ করতে কখনো দ্বিধা বা সংকোচ করবেন না।
+        আমরা সবসময় বন্ধুত্বপূর্ণ, আন্তরিক ও সম্মানজনক আচরণ করব।
+        আপনার প্রতিটি প্রশ্ন মনোযোগ দিয়ে শুনব।
+      </div>
+
+      <div class="support-feature">
+        <span>🧠</span>
+        <strong>Step-by-step Skill Development</strong><br>
+        শুধু দেখে শেখা নয়, নিজে হাতে কাজ করা, ভুল সংশোধন করা
+        এবং ধীরে ধীরে আত্মবিশ্বাসের সঙ্গে দক্ষতা অর্জনে সহযোগিতা।
+      </div>
+
+    </div>
+
+    <div class="support-duration">
+      <div>
+        <strong>৬০ দিন</strong>
+        <p>Dedicated Student Support</p>
+      </div>
+      <div style="font-size:42px">🎯</div>
+    </div>
+
+    <div class="support-promise">
+      <strong>আমাদের কাছে আপনার প্রতিটি প্রশ্নই গুরুত্বপূর্ণ।</strong>
+      <br><br>
+      আমরা চাই আপনারা আমাদের সঙ্গে এমনভাবে যোগাযোগ করুন,
+      যেন কোনো দ্বিধা বা সংকোচ না থাকে। কোনো বিষয় বুঝতে
+      অসুবিধা হলে, কোনো ভুল হলে কিংবা মনে যেকোনো প্রশ্ন এলে
+      নির্দ্বিধায় আমাদের জানাবেন। আমরা ধৈর্যসহকারে আপনাদের
+      কথা শুনব এবং যথাসাধ্য সহযোগিতা করব।
+      <br><br>
+      আমাদের কাছে কোনো প্রশ্নই ছোট নয়। আমরা চাই আপনারা
+      স্বাচ্ছন্দ্যে প্রশ্ন করুন, Practice করুন, ভুল থেকে শিখুন
+      এবং নিজের হাতে বাস্তব AI Automation System তৈরি করতে
+      আত্মবিশ্বাসী হয়ে উঠুন।
+      <br><br>
+      <strong>
+        আমাদের কাছে আপনার শেখা ও দক্ষতা অর্জনই সবচেয়ে গুরুত্বপূর্ণ।
+      </strong>
+    </div>
+
+    
+
+  </div>
+<div class="aim-tagline">
+    <div class="aim-tagline-label">OUR PHILOSOPHY</div>
+    <h3>Learn with Confidence</h3>
+    <h3>Build with Support</h3>
+    <h3>Grow with AIM Academy</h3>
+</div></section>
+
+<!-- AIM-ADMISSION-SECTION -->
+
+
+
+
+    <h3>Learn with AIM Academy.</h3>
+    <h3>Build Real Skills.</h3>
+    <h3>Grow with Confidence.</h3>
+</div>
+<footer class="footer">© 2026 AIM Academy · AI Automation Mastery · Learn | Build | Automate</footer>
+</div>
+</main>
+</div>
+
+<script>
+const modules = [
+{
+ title:"AI & Automation Fundamentals",icon:"▣",short:"AI, LLM, Automation, n8n Basics",
+ desc:"AI ও Automation-এর ভিত্তি থেকে শুরু করে প্রথম Workflow তৈরি করা শিখবেন।",
+ classes:[
+  ["Class 01","AI & Automation Fundamentals",["AI, ML ও Deep Learning পরিচিতি","LLM: ChatGPT, Gemini ও Claude","Workflow বনাম AI Agent","No-code, Low-code ও Code","বাস্তব ব্যবসায় AI Automation-এর ব্যবহার"]],
+  ["Class 02","n8n Platform & Workflow Basics",["n8n Cloud ও Local পরিচিতি","Dashboard, Workflow ও Nodes","Trigger: Manual, Schedule ও Webhook","Workflow Execute, Save ও Export"]],
+  ["Class 03","Your First Automation",["Google Forms Integration","Google Sheets-এ Data সংরক্ষণ","Gmail দিয়ে Automated Email","প্রথম End-to-End Workflow তৈরি"]]
+ ],project:"Project 01 – First Automated Data Collection System"
+},
+{
+ title:"n8n Workflow Engineering & Data Management",icon:"⌘",short:"Advanced Workflow, JSON, Logic, Data Handling",
+ desc:"Complex workflow, data processing এবং debugging-এর বাস্তব দক্ষতা তৈরি করবেন।",
+ classes:[
+  ["Class 04","Workflow Logic & Control",["IF ও Switch Conditions","Merge, Loop ও Split","Filter, Sort ও Wait","Sub-workflow ও Conditional Logic"]],
+  ["Class 05","JSON & Data Transformation",["JSON, Objects ও Arrays","Expressions ও Data Mapping","Data Cleaning ও Duplicate Handling","Code Node ও Basic JavaScript"]],
+  ["Class 06","Debugging & Error Handling",["Execution History ও Logs","Error Trigger ও Retry","Fallback ও Data Validation","Workflow Testing ও Optimization"]]
+ ],project:"Project 02 – Smart Data Management System"
+},
+{
+ title:"API, Webhook & Software Integration",icon:"</>",short:"REST API, Webhook, Database, Google Services",
+ desc:"বিভিন্ন Software, API ও Database একসঙ্গে যুক্ত করে Automation তৈরি করবেন।",
+ classes:[
+  ["Class 07","API Fundamentals",["API ও REST Architecture","GET, POST, PUT, PATCH ও DELETE","Headers, Parameters ও Body","API Key, Bearer Token ও OAuth","Postman দিয়ে API Testing"]],
+  ["Class 08","Webhook & HTTP Integration",["Webhook কীভাবে কাজ করে","n8n HTTP Request Node","Pagination ও Rate Limits","Google, Gmail ও Telegram API Integration"]],
+  ["Class 09","Database Integration",["Database Fundamentals","PostgreSQL ও Supabase","CRUD Operations","Credentials ও Data Security"]]
+ ],project:"Project 03 – Lead Collection & Notification System"
+},
+{
+ title:"AI Models & AI Agent Development",icon:"🤖",short:"Prompt Engineering, Tool Calling, Memory, Agent",
+ desc:"LLM, Prompt Engineering ও AI Agent ব্যবহার করে Intelligent System তৈরি করবেন।",
+ classes:[
+  ["Class 10","AI Models & Prompt Engineering",["OpenAI, Gemini ও Claude","Model Selection ও API Integration","System, User ও Few-shot Prompt","Structured JSON Output","Token, Context ও API Cost"]],
+  ["Class 11","AI Agent Architecture",["AI Agent কী ও কীভাবে কাজ করে","Agent Node ও Instructions","Tool Calling ও Function Calling","Multi-step Agent","Human-in-the-loop"]],
+  ["Class 12","Memory & Intelligent Conversations",["Short-term ও Long-term Memory","Conversation History ও Context","AI Classification ও Response","Human Handover ও Agent Testing"]]
+ ],project:"Project 04 – AI Customer Support Agent"
+},
+{
+ title:"Social Media, Business & CRM Automation",icon:"◉",short:"Facebook, Instagram, WhatsApp, Telegram, CRM",
+ desc:"Social Media, Customer Communication ও Sales Process Automation করতে শিখবেন।",
+ classes:[
+  ["Class 13","Facebook & Instagram Automation",["Facebook Page ও Messenger Automation","Comment ও Message Management","Instagram Messaging API","AI Content Generation","Automated Posting & Approval"]],
+  ["Class 14","WhatsApp & Telegram Automation",["WhatsApp Business Cloud API","Automated Message & Customer Reply","Telegram Bot Development","Follow-up ও Order Notification","Human Handover"]],
+  ["Class 15","CRM & Sales Automation",["CRM ও Customer Database","Lead Management ও Segmentation","Sales Pipeline ও Follow-up","Order Management ও Reporting"]]
+ ],project:"Project 05 – AI Sales & Social Media Automation System"
+},
+{
+ title:"Lead Generation, Web Scraping & RAG",icon:"⌕",short:"Web Scraping, Lead Enrichment, Vector Database",
+ desc:"Lead সংগ্রহ, Data Enrichment এবং নিজের Knowledge Base দিয়ে AI Assistant তৈরি করবেন।",
+ classes:[
+  ["Class 16","Lead Generation & Web Scraping",["Lead Generation ও ICP","Google Maps/Places API","Apify ও Website Extraction","Email Extraction ও Verification","Lead Enrichment ও Scoring"]],
+  ["Class 17","RAG & Vector Database",["RAG Architecture","PDF Processing ও Chunking","Embeddings ও Vector Database","Supabase Vector ও Semantic Search"]],
+  ["Class 18","Knowledge Assistant Development",["Document ও Website Knowledge Base","PDF Question Answering","RAG Chatbot","Lead Qualification ও Notification"]]
+ ],project:"Project 06 – AI Lead Generation & Knowledge Assistant"
+},
+{
+ title:"Advanced AI, Deployment & Production Engineering",icon:"☁",short:"MCP, Docker, VPS, Security, Monitoring",
+ desc:"Automation-কে নিরাপদভাবে Deploy, Monitor ও Production-ready করতে শিখবেন।",
+ classes:[
+  ["Class 19","Advanced AI & MCP",["MCP Architecture ও Concepts","MCP Server, Client ও Tools","Multi-agent Workflow","Context Engineering","Browser ও Voice Automation Overview"]],
+  ["Class 20","Deployment & Self-hosting",["n8n Cloud বনাম Self-hosting","Linux ও VPS Fundamentals","Docker ও Docker Compose","Domain, SSL ও Environment Variables","Backup ও Restore"]],
+  ["Class 21","Production Engineering",["API, Webhook ও Database Security","Access Control ও Secret Management","Monitoring, Logs ও Alerts","Retry, Recovery ও Optimization","Production Testing ও Maintenance"]]
+ ],project:"Project 07 – Production-ready AI Automation System"
+},
+{
+ title:"Freelancing, Client Projects & SaaS",icon:"▱",short:"Client Hunting, Project Delivery, Agency & SaaS",
+ desc:"বাস্তব Client Project, Professional Delivery এবং SaaS Business-এর ভিত্তি শিখবেন।",
+ classes:[
+  ["Class 22","Freelancing & Client Acquisition",["Fiverr ও Upwork Profile","Portfolio ও Project Showcase","Client Hunting ও LinkedIn","Outreach, Proposal ও Communication"]],
+  ["Class 23","Client Management & SaaS",["Client Requirements ও Scope","Project Budget ও Pricing","Documentation ও Handover","Maintenance ও Agency Model","SaaS Validation ও Subscription"]],
+  ["Class 24","Final Capstone & Presentation",["Complete System Architecture","Multi-API ও AI Agent Integration","Database ও Error Handling","Deployment ও Security Testing","Final Demo & Client Presentation"]]
+ ],project:"Project 08 – Complete AI Business Automation System"
+}
+];
+
+const grid=document.getElementById("moduleGrid");
+modules.forEach((m,i)=>{
+ const card=document.createElement("button");
+ card.className="module-card";
+ card.innerHTML=`<div class="module-icon">${m.icon}</div><div><div class="number">MODULE 0${i+1}</div><h3>${m.title}</h3><p>${m.short}</p></div>`;
+ card.addEventListener("click",()=>openModule(i,card));
+ grid.appendChild(card);
+});
+
+function openModule(index,card){
+ const m=modules[index];
+ document.querySelectorAll(".module-card").forEach(c=>c.classList.remove("selected"));
+ if(card) card.classList.add("selected");
+ document.getElementById("detailBadge").textContent=`MODULE 0${index+1} · 3 CLASSES`;
+ document.getElementById("detailTitle").textContent=m.title;
+ document.getElementById("detailDescription").textContent=m.desc;
+ document.getElementById("classGrid").innerHTML=m.classes.map(c=>`
+  <article class="class-card">
+   <div class="class-no">${c[0].toUpperCase()}</div>
+   <h3>${c[1]}</h3>
+   <ul>${c[2].map(t=>`<li>${t}</li>`).join("")}</ul>
+  </article>`).join("");
+ document.getElementById("projectName").textContent=m.project;
+ document.getElementById("moduleDetails").classList.add("show");
+ document.getElementById("moduleDetails").scrollIntoView({behavior:"smooth",block:"start"});
+ document.getElementById("sidebar").classList.remove("open");
+}
+function showHome(){
+ document.getElementById("moduleDetails").classList.remove("show");
+ document.querySelectorAll(".module-card").forEach(c=>c.classList.remove("selected"));
+ document.getElementById("home").scrollIntoView({behavior:"smooth"});
+ document.getElementById("sidebar").classList.remove("open");
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
