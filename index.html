@@ -1534,6 +1534,41 @@ button{font:inherit;cursor:pointer}
     grid-row:1;
   }
 }
+
+/* REAL BRAND LOGOS */
+.module-tool-logo-wrap {
+  width:29px;
+  height:29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:2px;
+}
+
+.module-tool-real-logo {
+  width:25px;
+  height:25px;
+  object-fit:contain;
+  display:block;
+}
+
+.module-tool-tile {
+  gap:2px;
+}
+
+.ghl-real-logo {
+  width:38px;
+  height:38px;
+  object-fit:contain;
+}
+
+.ghl-feature-logo {
+  gap:5px;
+}
+
+.ghl-logo-word {
+  font-size:19px;
+}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -1687,9 +1722,6 @@ button{font:inherit;cursor:pointer}
   <div class="module-view-tabs">
     <button class="module-tab active" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
       🗂 All Modules (8)
-    </button>
-    <button class="module-tab" onclick="document.getElementById('module-tools-overview').scrollIntoView({behavior:'smooth'})">
-      ⚒ Tools Overview
     </button>
     <button class="module-tab" onclick="showModuleProjects()">
       🚀 Projects
@@ -1991,9 +2023,44 @@ const displayTitles = [
 ];
 
 function makeToolTile(tool) {
+ const logoDomains = {
+  openai:"openai.com",
+  gemini:"gemini.google.com",
+  claude:"anthropic.com",
+  n8n:"n8n.io",
+  sheets:"sheets.google.com",
+  javascript:"javascript.com",
+  postman:"postman.com",
+  supabase:"supabase.com",
+  postgres:"postgresql.org",
+  gmail:"gmail.com",
+  langchain:"langchain.com",
+  ghl:"gohighlevel.com",
+  meta:"meta.com",
+  whatsapp:"whatsapp.com",
+  telegram:"telegram.org",
+  apify:"apify.com",
+  maps:"maps.google.com",
+  places:"developers.google.com",
+  docker:"docker.com",
+  github:"github.com",
+  vps:"digitalocean.com",
+  fiverr:"fiverr.com",
+  upwork:"upwork.com"
+ };
+
+ const domain = logoDomains[tool.style] || "google.com";
+ const logoUrl = "https://www.google.com/s2/favicons?domain=" + domain + "&sz=128";
+
  return `
   <div class="module-tool-tile">
-   <span class="module-tool-mark ${tool.style}">${tool.mark}</span>
+   <span class="module-tool-logo-wrap">
+    <img class="module-tool-real-logo"
+         src="${logoUrl}"
+         alt="${tool.name} logo"
+         loading="lazy"
+         onerror="this.style.display='none'">
+   </span>
    <span class="module-tool-name">${tool.name}</span>
   </div>
  `;
@@ -2028,8 +2095,11 @@ modules.forEach((m,i)=>{
    </span>
 
    <span class="ghl-feature-logo">
-    <strong class="ghl-logo-word">⬆⬆ HighLevel</strong>
-    <span>GoHighLevel (GHL)</span>
+    <img class="ghl-real-logo"
+         src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=128"
+         alt="GoHighLevel logo">
+    <strong class="ghl-logo-word">GoHighLevel</strong>
+    <span>CRM & Marketing Automation</span>
    </span>
 
    <span class="ghl-feature-list">
