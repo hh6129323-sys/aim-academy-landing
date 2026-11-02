@@ -821,6 +821,29 @@ button{font:inherit;cursor:pointer}
   align-items: center;
   justify-content: center;
 }
+
+/* PRICING BUTTON TEXT FIX */
+.pricing-details-card .pricing-enroll {
+  width:100% !important;
+  min-height:44px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:10px !important;
+  color:#ffffff !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  text-align:center !important;
+}
+.pricing-details-card .pricing-enroll-label,
+.pricing-details-card .pricing-enroll-arrow {
+  color:#ffffff !important;
+  display:inline !important;
+  font-size:12px !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -868,10 +891,11 @@ button{font:inherit;cursor:pointer}
         <li><span>✓</span> Freelancing & Client Skills</li>
       </ul>
 
-      <button class="pricing-enroll"
-        onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
-        Explore Course <span>→</span>
-      </button>
+      <button class="pricing-enroll" type="button"
+  onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
+  <span class="pricing-enroll-label">Explore Course</span>
+  <span class="pricing-enroll-arrow">→</span>
+</button>
     </section>
     <section class="demo-registration" aria-labelledby="demo-registration-title">
       <div class="demo-form-heading">
