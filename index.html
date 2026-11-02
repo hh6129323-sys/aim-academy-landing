@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
@@ -678,6 +678,107 @@ button{font:inherit;cursor:pointer}
   }
   .sidebar.open { display:flex; }
 }
+
+/* FREE DEMO REGISTRATION FORM */
+.demo-registration {
+  margin-top: 15px;
+  padding: 13px 11px 12px;
+  border: 1.5px solid #ffb4c7;
+  border-radius: 15px;
+  background: linear-gradient(145deg,#fffafd,#fff0f4);
+}
+.demo-form-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.demo-form-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #ed1747;
+  border-radius: 10px;
+  color: #ed1747;
+  font-size: 17px;
+}
+.demo-form-heading h4 {
+  margin: 0;
+  color: #172033;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 850;
+}
+.demo-form-heading p {
+  margin: 2px 0 0;
+  color: #df1242;
+  font-size: 15px;
+  font-weight: 850;
+}
+.demo-form-subtitle {
+  margin: 9px 0 10px;
+  color: #657087;
+  font-size: 10px;
+  line-height: 1.5;
+}
+#demo-registration-form {
+  display: grid;
+  gap: 8px;
+}
+.demo-field {
+  min-height: 41px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 10px;
+  border: 1px solid #e7dce2;
+  border-radius: 24px;
+  background: #fff;
+}
+.demo-field:focus-within {
+  border-color: #ed1747;
+  box-shadow: 0 0 0 3px rgba(237,23,71,.08);
+}
+.demo-field-icon {
+  color: #e51746;
+  font-size: 17px;
+}
+.demo-field input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #263247;
+  font: inherit;
+  font-size: 11px;
+}
+.demo-field input::placeholder {
+  color: #667085;
+  opacity: 1;
+}
+.demo-submit {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(100deg,#f01845,#c90838);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+}
+.demo-form-feedback {
+  margin: 7px 2px 0;
+  color: #a10c35;
+  font-size: 10px;
+  line-height: 1.45;
+}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -730,6 +831,40 @@ button{font:inherit;cursor:pointer}
       Explore Course <span>→</span>
     </button>
 
+    <section class="demo-registration" aria-labelledby="demo-registration-title">
+      <div class="demo-form-heading">
+        <span class="demo-form-icon">▶</span>
+        <div>
+          <h4 id="demo-registration-title">Free Registration</h4>
+          <p>for Demo Class</p>
+        </div>
+      </div>
+
+      <p class="demo-form-subtitle">ডেমো ক্লাসে অংশ নিতে এখনই রেজিস্ট্রেশন করুন</p>
+
+      <form id="demo-registration-form" onsubmit="return handleDemoRegistration(event)">
+        <label class="demo-field">
+          <span class="demo-field-icon">♙</span>
+          <input type="text" name="fullName" placeholder="Full Name" autocomplete="name" required>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field-icon">✉</span>
+          <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field-icon">☎</span>
+          <input type="tel" name="phone" placeholder="Phone Number (e.g. 017XXXXXXXX)" autocomplete="tel" required>
+        </label>
+
+        <button class="demo-submit" type="submit">
+          ➤ <span>Submit Registration</span>
+        </button>
+      </form>
+
+      <p class="demo-form-feedback" id="demo-form-feedback" role="status"></p>
+    </section>
     <p class="pricing-note">Learn with Confidence · Build with Support</p>
   </div>
 
@@ -1048,6 +1183,18 @@ function showHome(){
  document.querySelectorAll(".module-card").forEach(c=>c.classList.remove("selected"));
  document.getElementById("home").scrollIntoView({behavior:"smooth"});
  document.getElementById("sidebar").classList.remove("open");
+}
+</script>
+<script>
+function handleDemoRegistration(event) {
+  event.preventDefault();
+
+  const feedback = document.getElementById("demo-form-feedback");
+
+  feedback.textContent =
+    "ফর্মের ডিজাইন যুক্ত হয়েছে। তথ্য সংরক্ষণ চালু করতে Google Sheets বা Supabase সংযোগ করতে হবে।";
+
+  return false;
 }
 </script>
 </body>
