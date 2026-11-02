@@ -1098,6 +1098,442 @@ button{font:inherit;cursor:pointer}
     margin-top:28px;
   }
 }
+
+/* AIM-MODULE-REFERENCE-DESIGN */
+
+/* Module heading */
+.aim-module-section {
+  scroll-margin-top:85px;
+}
+
+.module-page-heading {
+  margin-bottom:20px;
+}
+
+.module-page-kicker {
+  display:inline-flex;
+  padding:8px 14px;
+  border-radius:30px;
+  background:#ffe9ef;
+  color:#df123f;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.3px;
+}
+
+.module-page-heading h2 {
+  margin:10px 0 5px;
+  color:#14213d;
+  font-size:30px;
+  line-height:1.2;
+  font-weight:900;
+}
+
+.module-page-heading p {
+  margin:0;
+  color:#60708a;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* Tabs */
+.module-view-tabs {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin:20px 0 22px;
+}
+
+.module-tab {
+  min-height:43px;
+  border:1px solid #dce3ef;
+  border-radius:10px;
+  background:#fff;
+  color:#25334c;
+  font-size:13px;
+  font-weight:750;
+  box-shadow:0 3px 10px rgba(20,33,61,.04);
+}
+
+.module-tab.active {
+  background:linear-gradient(100deg,#f01845,#c90838);
+  border-color:#e51442;
+  color:#fff;
+}
+
+/* Module rows */
+.module-grid {
+  display:flex !important;
+  flex-direction:column !important;
+  gap:10px !important;
+}
+
+.module-card.aim-reference-module-card {
+  width:100%;
+  min-height:106px;
+  display:grid !important;
+  grid-template-columns:48px minmax(210px,1fr) minmax(300px,390px) 18px;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
+  border:1px solid #dfe5ef;
+  border-radius:15px;
+  background:#fff;
+  color:#14213d;
+  text-align:left;
+  box-shadow:0 4px 13px rgba(20,33,61,.055);
+  transition:transform .2s, border-color .2s, box-shadow .2s;
+  cursor:pointer;
+}
+
+.module-card.aim-reference-module-card:hover {
+  transform:translateY(-2px);
+  border-color:#ff9db5;
+  box-shadow:0 8px 20px rgba(20,33,61,.09);
+}
+
+.module-number-box {
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:11px;
+  background:#ffe9ef;
+  color:#c90838;
+  font-size:21px;
+  font-weight:950;
+}
+
+.module-main-info {
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  gap:5px;
+}
+
+.module-card-title {
+  color:#14213d;
+  font-size:15px;
+  font-weight:900;
+  line-height:1.35;
+}
+
+.module-short-description {
+  color:#52627c;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.module-meta-row {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:2px;
+}
+
+.module-meta-row span {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:5px 9px;
+  border:1px solid #e6e7f0;
+  border-radius:8px;
+  background:#fbf9fc;
+  color:#34425b;
+  font-size:10px;
+  font-weight:750;
+}
+
+.module-tool-area {
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  min-width:0;
+}
+
+.module-tool-caption {
+  width:max-content;
+  padding:4px 9px;
+  border-radius:20px;
+  background:#fff0f3;
+  color:#e20e40;
+  font-size:9px;
+  font-weight:900;
+}
+
+.module-tool-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:6px;
+}
+
+.module-tool-tile {
+  min-width:0;
+  min-height:58px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:3px;
+  padding:5px 3px;
+  border:1px solid #e0e5ee;
+  border-radius:11px;
+  background:linear-gradient(180deg,#fff,#fafbfe);
+  box-shadow:0 2px 5px rgba(20,33,61,.04);
+}
+
+.module-tool-mark {
+  min-height:27px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  font-weight:950;
+  line-height:1;
+}
+
+.module-tool-name {
+  max-width:100%;
+  overflow:hidden;
+  color:#17243d;
+  font-size:9px;
+  font-weight:850;
+  text-align:center;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.module-tool-mark.openai {color:#111827}
+.module-tool-mark.gemini {color:#4285f4}
+.module-tool-mark.claude {color:#e36b42}
+.module-tool-mark.n8n {color:#ed1747}
+.module-tool-mark.sheets {color:#159b58}
+.module-tool-mark.javascript {color:#b69a00}
+.module-tool-mark.postman {color:#f06427}
+.module-tool-mark.supabase {color:#16a36a}
+.module-tool-mark.postgres {color:#32648d}
+.module-tool-mark.gmail {color:#e94235}
+.module-tool-mark.langchain {color:#344054}
+.module-tool-mark.ghl {color:#e51746;font-size:13px}
+.module-tool-mark.meta {color:#087cf0;font-size:30px}
+.module-tool-mark.whatsapp {color:#18b96b}
+.module-tool-mark.telegram {color:#249bd7}
+.module-tool-mark.apify {color:#e99a00}
+.module-tool-mark.maps {color:#20a464}
+.module-tool-mark.places {color:#e14a79}
+.module-tool-mark.docker {color:#168bd2}
+.module-tool-mark.github {color:#111827}
+.module-tool-mark.vps {color:#344054}
+.module-tool-mark.fiverr {color:#16a66a}
+.module-tool-mark.upwork {color:#16a66a;font-size:15px}
+
+/* Expand arrow */
+.module-card.aim-reference-module-card .module-expand-arrow {
+  position:static;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#17243d;
+  font-size:22px;
+  font-weight:800;
+  transition:transform .2s;
+}
+
+.module-card.aim-reference-module-card:hover .module-expand-arrow {
+  transform:translateY(3px);
+}
+
+/* Special GoHighLevel module */
+.module-card.aim-reference-module-card.ghl-module-card {
+  grid-template-columns:48px minmax(220px,1.1fr) minmax(150px,.8fr) minmax(190px,1fr) 18px;
+  min-height:135px;
+  border:1.5px solid #ff7d9d !important;
+  background:linear-gradient(110deg,#fff8fa,#fff0f4 50%,#fff) !important;
+  box-shadow:0 5px 17px rgba(237,23,71,.075);
+}
+
+.ghl-module-card .module-main-info {
+  gap:6px;
+}
+
+.ghl-module-card .module-title-line {
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.ghl-module-card .module-title-line strong {
+  font-size:15px;
+  font-weight:950;
+  line-height:1.4;
+}
+
+.ghl-special-badge {
+  display:inline-flex;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#e91646;
+  color:#fff;
+  font-size:9px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.ghl-feature-logo {
+  min-height:90px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:10px;
+  border:1px solid #ffb5c7;
+  border-radius:12px;
+  background:#fff;
+  text-align:center;
+}
+
+.ghl-logo-word {
+  color:#14213d;
+  font-size:21px;
+  font-weight:950;
+  letter-spacing:-1px;
+}
+
+.ghl-feature-logo > span {
+  color:#e51746;
+  font-size:12px;
+  font-weight:900;
+}
+
+.ghl-feature-list {
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  color:#293951;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.4;
+}
+
+.ghl-feature-list span::first-letter {
+  color:#ed1747;
+}
+
+/* Keep module detail behavior */
+#moduleDetails {
+  scroll-margin-top:90px;
+}
+
+@media(max-width:1100px) {
+  .module-card.aim-reference-module-card {
+    grid-template-columns:44px minmax(180px,1fr) minmax(260px,330px) 16px;
+    gap:10px;
+    padding:12px;
+  }
+
+  .module-card.aim-reference-module-card.ghl-module-card {
+    grid-template-columns:44px minmax(180px,1fr) minmax(130px,.7fr) minmax(170px,.9fr) 16px;
+  }
+
+  .module-tool-tile {
+    min-height:53px;
+  }
+}
+
+@media(max-width:760px) {
+  .module-page-heading h2 {
+    font-size:23px;
+  }
+
+  .module-page-heading p {
+    font-size:12px;
+  }
+
+  .module-view-tabs {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:7px;
+  }
+
+  .module-tab {
+    min-height:40px;
+    font-size:11px;
+  }
+
+  .module-card.aim-reference-module-card,
+  .module-card.aim-reference-module-card.ghl-module-card {
+    grid-template-columns:40px minmax(0,1fr) 15px;
+    gap:9px;
+    padding:12px 10px;
+  }
+
+  .module-number-box {
+    width:38px;
+    height:38px;
+    font-size:18px;
+  }
+
+  .module-card-title,
+  .ghl-module-card .module-title-line strong {
+    font-size:13px;
+  }
+
+  .module-short-description {
+    font-size:10px;
+  }
+
+  .module-tool-area {
+    grid-column:2 / 3;
+    width:100%;
+    margin-top:5px;
+  }
+
+  .module-tool-grid {
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+
+  .module-tool-tile {
+    min-height:51px;
+  }
+
+  .module-tool-name {
+    font-size:8px;
+  }
+
+  .module-card.aim-reference-module-card .module-expand-arrow {
+    grid-column:3;
+    grid-row:1;
+  }
+
+  .ghl-module-card .ghl-feature-logo {
+    grid-column:2 / 3;
+    grid-row:3;
+    min-height:75px;
+  }
+
+  .ghl-module-card .ghl-feature-list {
+    grid-column:2 / 3;
+    grid-row:4;
+    font-size:10px;
+  }
+
+  .ghl-module-card .module-main-info {
+    grid-column:2 / 3;
+    grid-row:1;
+  }
+
+  .ghl-module-card .module-number-box {
+    grid-column:1;
+    grid-row:1;
+  }
+
+  .ghl-module-card .module-expand-arrow {
+    grid-column:3;
+    grid-row:1;
+  }
+}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -1244,9 +1680,28 @@ button{font:inherit;cursor:pointer}
   <div class="stat"><div class="stat-icon">▤</div><div><strong>৮০টি</strong><small>লার্নিং রিসোর্স</small></div></div>
 </section>
 
-<section id="modules">
-  <div class="section-heading"><h2>কোর্সে কী কী শিখবেন?</h2><div class="underline"></div></div>
-  <p style="color:var(--muted);margin-bottom:18px">প্রতিটি মডিউলে ক্লিক করে বিস্তারিত ক্লাস ও শেখার বিষয়গুলো দেখুন।</p>
+<section id="modules" class="aim-module-section">
+  <div class="module-page-heading">
+    <span class="module-page-kicker">COURSE MODULES & TOOLS</span>
+    <h2>Course Modules with Tools</h2>
+    <p>প্রতিটি মডিউলে কী শিখবেন, কী প্রজেক্ট করবেন এবং কোন কোন Tool ব্যবহার করবেন—সবকিছু একসঙ্গে দেখুন।</p>
+  </div>
+
+  <div class="module-view-tabs">
+    <button class="module-tab active" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
+      🗂 All Modules (8)
+    </button>
+    <button class="module-tab" onclick="document.getElementById('module-tools-overview').scrollIntoView({behavior:'smooth'})">
+      ⚒ Tools Overview
+    </button>
+    <button class="module-tab" onclick="showModuleProjects()">
+      🚀 Projects
+    </button>
+    <button class="module-tab" onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
+      📈 Learning Path
+    </button>
+  </div>
+
   <div class="module-grid" id="moduleGrid"></div>
 </section>
 
@@ -1581,39 +2036,153 @@ const modules = [
 ];
 
 const grid=document.getElementById("moduleGrid");
+
+const moduleTools = [
+ [
+  {name:"OpenAI",mark:"◎",style:"openai"},
+  {name:"Gemini",mark:"✦",style:"gemini"},
+  {name:"Claude",mark:"✳",style:"claude"},
+  {name:"n8n",mark:"⌘",style:"n8n"}
+ ],
+ [
+  {name:"n8n",mark:"⌘",style:"n8n"},
+  {name:"Google Sheets",mark:"▦",style:"sheets"},
+  {name:"JavaScript",mark:"JS",style:"javascript"},
+  {name:"Postman",mark:"◉",style:"postman"}
+ ],
+ [
+  {name:"Postman",mark:"◉",style:"postman"},
+  {name:"Supabase",mark:"ϟ",style:"supabase"},
+  {name:"PostgreSQL",mark:"🐘",style:"postgres"},
+  {name:"Gmail API",mark:"M",style:"gmail"}
+ ],
+ [
+  {name:"OpenAI",mark:"◎",style:"openai"},
+  {name:"Gemini",mark:"✦",style:"gemini"},
+  {name:"Claude",mark:"✳",style:"claude"},
+  {name:"LangChain",mark:"↗",style:"langchain"}
+ ],
+ [
+  {name:"GoHighLevel",mark:"GHL",style:"ghl"},
+  {name:"Meta",mark:"∞",style:"meta"},
+  {name:"WhatsApp API",mark:"◉",style:"whatsapp"},
+  {name:"Telegram",mark:"➤",style:"telegram"}
+ ],
+ [
+  {name:"Apify",mark:"A",style:"apify"},
+  {name:"Google Maps",mark:"G",style:"maps"},
+  {name:"Places API",mark:"⌖",style:"places"},
+  {name:"Supabase",mark:"ϟ",style:"supabase"}
+ ],
+ [
+  {name:"Docker",mark:"▤",style:"docker"},
+  {name:"GitHub",mark:"●",style:"github"},
+  {name:"VPS",mark:"▥",style:"vps"},
+  {name:"n8n",mark:"⌘",style:"n8n"}
+ ],
+ [
+  {name:"Fiverr",mark:"f",style:"fiverr"},
+  {name:"Upwork",mark:"up",style:"upwork"},
+  {name:"GoHighLevel",mark:"GHL",style:"ghl"},
+  {name:"Supabase",mark:"ϟ",style:"supabase"}
+ ]
+];
+
+const displayTitles = [
+ "AI & Automation Fundamentals",
+ "n8n Workflow Engineering & Data Management",
+ "API, Webhook & Software Integration",
+ "AI Models & AI Agent Development",
+ "GoHighLevel (GHL) – CRM & Marketing Automation",
+ "Lead Generation, Web Scraping & RAG",
+ "Advanced AI, Deployment & Production Engineering",
+ "Freelancing, Client Projects & SaaS"
+];
+
+function makeToolTile(tool) {
+ return `
+  <div class="module-tool-tile">
+   <span class="module-tool-mark ${tool.style}">${tool.mark}</span>
+   <span class="module-tool-name">${tool.name}</span>
+  </div>
+ `;
+}
+
 modules.forEach((m,i)=>{
  const card=document.createElement("button");
- card.className="module-card";
-  const moduleTools = [
-  ["ChatGPT","Gemini","Claude","n8n"],
-  ["n8n","Google Sheets","JavaScript","Postman"],
-  ["Postman","Supabase","PostgreSQL","Gmail API"],
-  ["OpenAI","Gemini","Claude","LangChain"],
-  ["GoHighLevel","Meta Business Suite","WhatsApp API","Telegram"],
-  ["Apify","Google Maps API","Places API","Supabase Vector"],
-  ["Docker","GitHub","VPS","MCP"],
-  ["Fiverr","Upwork","GoHighLevel","Supabase"]
- ];
+ card.type="button";
+ card.className="module-card aim-reference-module-card";
 
- const toolsHtml = moduleTools[i].map(t =>
-  `<span class="module-tool-chip">${t}</span>`
- ).join("");
+ const tools=moduleTools[i];
+ const toolTiles=tools.map(makeToolTile).join("");
 
- card.innerHTML=`
-  <div class="module-icon">${m.icon}</div>
-  <div class="module-card-content">
-   <div class="number">MODULE 0${i+1}</div>
-   <h3>${m.title}</h3>
-   <p>${m.short}</p>
-   <div class="module-tools-label">TOOLS YOU'LL USE</div>
-   <div class="module-tools-list">${toolsHtml}</div>
-  </div>
-  <span class="module-expand-arrow">⌄</span>
- `;
- if(i===4) card.classList.add("ghl-module-card");
+ if(i===4) {
+  card.classList.add("ghl-module-card");
+
+  card.innerHTML=`
+   <span class="module-number-box">05</span>
+
+   <span class="module-main-info">
+    <span class="module-title-line">
+     <strong>${displayTitles[i]}</strong>
+     <span class="ghl-special-badge">★ SPECIAL MODULE</span>
+    </span>
+    <span class="module-short-description">
+     CRM, Lead Management, Funnel, Email-SMS, Appointment & Agency Automation
+    </span>
+    <span class="module-meta-row">
+     <span>▣ ৩ Classes</span>
+     <span>▱ ১ Project</span>
+    </span>
+   </span>
+
+   <span class="ghl-feature-logo">
+    <strong class="ghl-logo-word">⬆⬆ HighLevel</strong>
+    <span>GoHighLevel (GHL)</span>
+   </span>
+
+   <span class="ghl-feature-list">
+    <span>✓ CRM & Lead Management</span>
+    <span>✓ Sales Funnel & Landing Page</span>
+    <span>✓ Email & SMS Automation</span>
+    <span>✓ Appointment Booking</span>
+    <span>✓ Agency & Client Management</span>
+   </span>
+
+   <span class="module-expand-arrow">⌄</span>
+  `;
+ } else {
+  card.innerHTML=`
+   <span class="module-number-box">${String(i+1).padStart(2,"0")}</span>
+
+   <span class="module-main-info">
+    <strong class="module-card-title">${displayTitles[i]}</strong>
+    <span class="module-short-description">${m.short}</span>
+    <span class="module-meta-row">
+     <span>▣ ${m.classes.length} Classes</span>
+     <span>▱ ১ Project</span>
+    </span>
+   </span>
+
+   <span class="module-tool-area">
+    <span class="module-tool-caption">Tools You'll Use</span>
+    <span class="module-tool-grid">${toolTiles}</span>
+   </span>
+
+   <span class="module-expand-arrow">⌄</span>
+  `;
+ }
+
  card.addEventListener("click",()=>openModule(i,card));
  grid.appendChild(card);
 });
+
+function showModuleProjects() {
+ const firstCard=document.querySelector(".aim-reference-module-card");
+ if(firstCard) {
+  openModule(0,firstCard);
+ }
+}
 
 function openModule(index,card){
  const m=modules[index];
