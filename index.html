@@ -466,6 +466,218 @@ button{font:inherit;cursor:pointer}
         padding: 6px 11px;
     }
 }
+
+/* AIM ACADEMY PREMIUM PRICING SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 270px;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 20;
+  padding: 22px 17px;
+  background: linear-gradient(155deg,#f01845 0%,#d90d3d 55%,#b90735 100%);
+  scrollbar-width: none;
+}
+.sidebar::-webkit-scrollbar { display:none; }
+
+.brand {
+  padding: 7px 5px 22px;
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  margin-bottom: 20px;
+}
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: rgba(255,255,255,.17);
+  font-size: 25px;
+}
+.brand h2 { font-size:21px; letter-spacing:-.5px; }
+.brand p { font-size:11px; letter-spacing:.5px; }
+
+.pricing-card {
+  background: #fff;
+  color: #172033;
+  border-radius: 17px;
+  padding: 17px 15px 14px;
+  box-shadow: 0 12px 30px rgba(75,0,20,.2);
+}
+.pricing-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:5px;
+}
+.admission-status {
+  color:#16845e;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.5px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.status-dot {
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#19b77c;
+  box-shadow:0 0 0 3px #e1f7ed;
+}
+.online-label {
+  background:#fff0f3;
+  color:#e51746;
+  border-radius:5px;
+  padding:5px 7px;
+  font-size:9px;
+  font-weight:800;
+}
+.pricing-eyebrow {
+  margin:19px 0 6px;
+  color:#e51746;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.65px;
+}
+.pricing-card h3 {
+  margin:0;
+  color:#172033;
+  font-size:21px;
+  line-height:1.2;
+  letter-spacing:-.6px;
+}
+.pricing-subtitle {
+  color:#697386;
+  font-size:11px;
+  line-height:1.6;
+  margin:8px 0 15px;
+}
+.price-area {
+  display:flex;
+  align-items:flex-start;
+  gap:3px;
+  color:#e51746;
+}
+.price-currency {
+  font-size:21px;
+  font-weight:800;
+  margin-top:6px;
+}
+.price-number {
+  font-size:39px;
+  font-weight:850;
+  line-height:1.1;
+  letter-spacing:-1.8px;
+}
+.price-caption {
+  color:#7a8392;
+  font-size:10px;
+  margin:3px 0 14px;
+}
+.pricing-divider {
+  height:1px;
+  background:#edf0f4;
+  margin:0 0 14px;
+}
+.included-title {
+  color:#263247;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.7px;
+  margin:0 0 11px;
+}
+.pricing-features {
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:10px;
+}
+.pricing-features li {
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  color:#465164;
+  font-size:11px;
+  line-height:1.4;
+}
+.pricing-features li span {
+  color:#e51746;
+  font-weight:900;
+  font-size:13px;
+}
+.pricing-enroll {
+  width:100%;
+  border:0;
+  border-radius:9px;
+  padding:12px;
+  margin-top:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  background:linear-gradient(100deg,#f01845,#ce0b3b);
+  color:white;
+  font-size:12px;
+  font-weight:800;
+  box-shadow:0 6px 15px rgba(229,20,65,.2);
+}
+.pricing-enroll:hover { filter:brightness(.95); }
+.pricing-note {
+  color:#9098a5;
+  text-align:center;
+  font-size:9px;
+  margin:11px 0 0;
+}
+.sidebar-footer {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:15px 5px 3px;
+  color:rgba(255,255,255,.85);
+  font-size:10px;
+}
+.sidebar-footer p { margin:0; line-height:1.5; }
+.sidebar-footer span { font-size:17px; }
+
+.main {
+  margin-left:270px;
+  height:100vh;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  flex:1;
+  min-width:0;
+}
+.layout { min-height:100vh; }
+
+@media(max-width:760px) {
+  .layout { display:block; }
+  .main {
+    margin-left:0;
+    height:auto;
+    min-height:100vh;
+    overflow:visible;
+  }
+  .sidebar {
+    display:none;
+    width:min(86vw,320px);
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    z-index:30;
+  }
+  .sidebar.open { display:flex; }
+}
 </style>
 <link rel="icon" type="image/png" href="aim-academy-favicon.png">
 <link rel="shortcut icon" href="aim-academy-favicon.ico">
@@ -474,18 +686,56 @@ button{font:inherit;cursor:pointer}
 <div class="layout">
 <aside class="sidebar" id="sidebar">
   <div class="brand">
-    <div class="brand-icon">🤖</div>
-    <div><h2>AIM Academy</h2><p>Learn | Build | Automate</p></div>
+    <div class="brand-icon">✦</div>
+    <div>
+      <h2>AIM Academy</h2>
+      <p>Learn | Build | Automate</p>
+    </div>
   </div>
-  <a class="side-link active" href="#" onclick="showHome();return false"><span>⌂</span> Course Overview</a>
-  <a class="side-link" href="#modules" onclick="showHome();return false"><span>▦</span> Modules & Classes</a>
-  <a class="side-link" href="#projects" onclick="showHome();return false"><span>▱</span> Projects (8)</a>
-  <a class="side-link" href="#resources" onclick="showHome();return false"><span>▤</span> Resources (80)</a>
-  <a class="side-link" href="#support" onclick="showHome();return false"><span>♧</span> Support & Community</a>
-  <a class="side-link" href="#certificate" onclick="showHome();return false"><span>✧</span> Certificate</a>
-  <div class="sidebar-bottom">
-    <strong>🚀 Start Your Journey</strong>
-    <p>শূন্য থেকে বাস্তব AI Automation System তৈরি শেখার যাত্রা শুরু করুন।</p>
+
+  <div class="pricing-card">
+    <div class="pricing-top">
+      <span class="admission-status">
+        <span class="status-dot"></span>
+        ADMISSION OPEN
+      </span>
+      <span class="online-label">ONLINE</span>
+    </div>
+
+    <p class="pricing-eyebrow">PROFESSIONAL TRAINING PROGRAM</p>
+    <h3>AI Automation Mastery</h3>
+    <p class="pricing-subtitle">শিখুন, তৈরি করুন এবং বাস্তব কাজে প্রয়োগ করুন</p>
+
+    <div class="price-area">
+      <span class="price-currency">৳</span>
+      <span class="price-number">7,000</span>
+    </div>
+    <p class="price-caption">One-time Course Fee</p>
+
+    <div class="pricing-divider"></div>
+
+    <p class="included-title">YOUR COURSE INCLUDES</p>
+
+    <ul class="pricing-features">
+      <li><span>✓</span> ৮ সপ্তাহের Structured Training</li>
+      <li><span>✓</span> ২৪টি Live Classes</li>
+      <li><span>✓</span> ৮টি Practical Projects</li>
+      <li><span>✓</span> ৮০টি Learning Resources</li>
+      <li><span>✓</span> ৬০ দিনের Student Support</li>
+      <li><span>✓</span> Freelancing & Client Skills</li>
+    </ul>
+
+    <button class="pricing-enroll"
+      onclick="document.getElementById('modules').scrollIntoView({behavior:'smooth'})">
+      Explore Course <span>→</span>
+    </button>
+
+    <p class="pricing-note">Learn with Confidence · Build with Support</p>
+  </div>
+
+  <div class="sidebar-footer">
+    <span>✦</span>
+    <p>Build Real-World AI Automation Skills</p>
   </div>
 </aside>
 
@@ -802,6 +1052,7 @@ function showHome(){
 </script>
 </body>
 </html>
+
 
 
 
